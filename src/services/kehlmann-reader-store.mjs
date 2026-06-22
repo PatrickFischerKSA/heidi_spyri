@@ -8,6 +8,10 @@ const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "../..");
 const dataDir = path.join(projectRoot, "data");
 const readerStorePath = path.join(dataDir, "kehlmann-reader-store.json");
+const supabaseUrl = process.env.SUPABASE_URL || "";
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || "";
+const supabaseTable = process.env.SUPABASE_STORE_TABLE || "reader_store";
+const supabaseStoreId = process.env.SUPABASE_STORE_ID || "heidi_spyri";
 
 const defaultPeerReviewCriteria = [
   {
@@ -43,6 +47,24 @@ const defaultActiveLessonId = () => defaultLessonIds()[0];
 const defaultPeerReviewLessonId = () => lessonCatalog().find((lesson) => lesson.id === "lesson-09-der-fall-vor-gericht")?.id || defaultLessonIds()[0];
 
 let inMemoryReaderStore = null;
+
+function hasSupabaseStore() {
+  return Boolean(supabaseUrl && supabaseKey);
+}
+
+function supabaseEndpoint(query = "") {
+  const base = supabaseUrl.replace(/\/+$/, "");
+  return `${base}/rest/v1/${encodeURIComponent(supabaseTable)}${query}`;
+}
+
+function supabaseHeaders(extra = {}) {
+  return {
+    apikey: supabaseKey,
+    Authorization: `Bearer ${supabaseKey}`,
+    "Content-Type": "application/json",
+    ...extra
+  };
+}
 
 function now() {
   return new Date().toISOString();
@@ -133,8 +155,51 @@ async function ensureReaderStoreFile() {
   }
 }
 
+async function readSupabaseStore() {
+  const query = `?id=eq.${encodeURIComponent(supabaseStoreId)}&select=payload`;
+  const response = await fetch(supabaseEndpoint(query), {
+    headers: supabaseHeaders()
+  });
+
+  if (!response.ok) {
+    throw new Error(`Supabase Store konnte nicht gelesen werden (${response.status}).`);
+  }
+
+  const rows = await response.json();
+  if (Array.isArray(rows) && rows[0]?.payload) {
+    return normalizeReaderStore(rows[0].payload);
+  }
+
+  const initialStore = defaultReaderStore();
+  await writeSupabaseStore(initialStore);
+  return normalizeReaderStore(initialStore);
+}
+
+async function writeSupabaseStore(nextStore) {
+  const response = await fetch(supabaseEndpoint("?on_conflict=id"), {
+    method: "POST",
+    headers: supabaseHeaders({
+      Prefer: "resolution=merge-duplicates,return=minimal"
+    }),
+    body: JSON.stringify({
+      id: supabaseStoreId,
+      payload: nextStore,
+      updated_at: now()
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error(`Supabase Store konnte nicht geschrieben werden (${response.status}).`);
+  }
+}
+
 export async function readReaderStore() {
   if (inMemoryReaderStore) {
+    return structuredClone(inMemoryReaderStore);
+  }
+
+  if (hasSupabaseStore()) {
+    inMemoryReaderStore = await readSupabaseStore();
     return structuredClone(inMemoryReaderStore);
   }
 
@@ -146,6 +211,11 @@ export async function readReaderStore() {
 
 export async function writeReaderStore(nextStore) {
   inMemoryReaderStore = structuredClone(nextStore);
+  if (hasSupabaseStore()) {
+    await writeSupabaseStore(nextStore);
+    return structuredClone(inMemoryReaderStore);
+  }
+
   await fs.writeFile(readerStorePath, `${JSON.stringify(nextStore, null, 2)}\n`);
   return structuredClone(inMemoryReaderStore);
 }

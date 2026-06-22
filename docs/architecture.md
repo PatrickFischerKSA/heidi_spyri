@@ -2,20 +2,20 @@
 
 ## Ziel
 
-Dieses Repo liefert eine einzelne, abgeschlossene Unterrichtseinheit zu Johanna Spyris *Heidi*. Es ist fuer GitHub und Render Free vorbereitet.
+Dieses Repo liefert eine einzelne, abgeschlossene Unterrichtseinheit zu Johanna Spyris *Heidi*. Es ist fuer GitHub, Vercel und Render vorbereitet.
 
 ## Laufzeitmodell
 
 - Express liefert Landingpage, offene Version, SEB-Version und Lehrer*innen-Dashboard.
 - Der Reader ist eine Vanilla-JS-Oberflaeche mit integriertem Volltext.
-- Klassen, Lernende, Arbeitsstaende und Peer Reviews werden dateibasiert in `data/kehlmann-reader-store.json` gespeichert.
-- Auf Render Free ist diese Datei fluechtig. Das ist fuer eine kostenlose Unterrichts- oder Testloesung akzeptabel, aber nicht fuer dauerhafte Archivierung.
+- Klassen, Lernende, Arbeitsstaende und Peer Reviews werden bevorzugt in Supabase gespeichert, wenn `SUPABASE_URL` und `SUPABASE_SERVICE_ROLE_KEY` gesetzt sind.
+- Ohne Supabase nutzt die App den lokalen Fallback `data/kehlmann-reader-store.json`.
 
 ## Kernmodule
 
 - `src/app.mjs`: Routing, HTML-Shells und Zugangsseiten
 - `src/routes/kehlmann-reader-api.mjs`: Reader- und Lehrer*innen-API
-- `src/services/kehlmann-reader-store.mjs`: Persistenz und Klassenlogik
+- `src/services/kehlmann-reader-store.mjs`: Persistenz, Supabase-Adapter und Klassenlogik
 - `src/services/kehlmann-reader-progress.mjs`: Lektions- und Fortschrittsauswertung
 - `src/services/kehlmann-reader-feedback.mjs`: differenzierte Feedbackdiagnostik
 - `public/kehlmann-reader/data.js`: Heidi-Lektionen, Leitfragen, Dossiers und Medienaufgaben
@@ -29,7 +29,7 @@ Dieses Repo liefert eine einzelne, abgeschlossene Unterrichtseinheit zu Johanna 
 
 ## Kostenfreie Deployment-Strategie
 
-Render Free hostet den Node-Server. GitHub hostet den Code.
+Vercel Hobby hostet den Serverless-Express-Einstieg, Supabase Free speichert die Lernstaende. Render Free bleibt als einfachere, aber fluechtigere Alternative erhalten.
 
 ## Erweiterungspfad
 

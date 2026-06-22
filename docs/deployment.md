@@ -1,56 +1,73 @@
 # Gratis-Deployment
 
-## Empfohlene Gratis-Loesung
+## Schlauere stabile Gratis-Loesung
 
-Die App ist fuer Render Free vorbereitet. Das ist die passende Gratis-Loesung, weil die Lernumgebung einen kleinen Node/Express-Server braucht:
+Die beste kostenlose Architektur ist:
 
-- `/open` fuer Lernende
-- `/teacher-entry` fuer die Lehrpersonen-Uebersicht
-- `/teacher` fuer das Dashboard
-- `/reader-api` fuer Lernstaende, Peer Review und Sofortfeedback
+1. **Vercel Hobby** fuer Hosting und Serverless Express
+2. **Supabase Free** fuer die Lernstaende
 
-GitHub Pages reicht dafuer nicht aus, weil dort keine Serverrouten laufen.
+Warum: Vercel hostet die App sehr bequem aus GitHub. Supabase speichert die Klassendaten in Postgres, statt sie in ein fluechtiges Dateisystem zu schreiben.
 
-## Render Free
+## Vercel einrichten
 
-Die Datei `render.yaml` ist bereits fertig eingerichtet:
+Die Datei `vercel.json` ist bereits enthalten. Sie leitet alle Routen an `api/index.mjs` weiter:
 
-- `plan: free`
-- `buildCommand: npm ci`
-- `startCommand: npm start`
-- `healthCheckPath: /`
-- `HOST=0.0.0.0`
+- `/`
+- `/open`
+- `/teacher-entry`
+- `/teacher`
+- `/reader-api`
+- `/reader/assets/...`
 
 Vorgehen:
 
-1. Projekt als GitHub-Repository hochladen.
-2. Bei Render einen neuen `Blueprint` aus dem Repository anlegen.
-3. Render erkennt `render.yaml` automatisch.
-4. Deploy starten.
-5. Nach dem Deploy diese Routen testen:
-   - `/`
-   - `/open`
-   - `/teacher-entry`
-   - `/teacher`
+1. Repository in Vercel importieren.
+2. Framework Preset: `Other`.
+3. Build Command: leer lassen oder `npm ci`.
+4. Output Directory: leer lassen.
+5. Environment Variables setzen:
+   - `SUPABASE_URL`
+   - `SUPABASE_SERVICE_ROLE_KEY`
+   - optional `SUPABASE_STORE_TABLE=reader_store`
+   - optional `SUPABASE_STORE_ID=heidi_spyri`
+   - optional `SEB_CONFIG_KEY_HASH`
+6. Deploy starten.
 
-## Kosten
+## Supabase einrichten
 
-Diese Variante kostet nichts.
+1. Supabase-Projekt erstellen.
+2. SQL Editor oeffnen.
+3. Inhalt von `sql/supabase-reader-store.sql` ausfuehren.
+4. In Vercel diese Werte setzen:
+   - `SUPABASE_URL`: Project URL
+   - `SUPABASE_SERVICE_ROLE_KEY`: Service role key
 
-Wichtig: Render Free hat keinen dauerhaft garantierten Dateispeicher. Die App funktioniert im Unterricht, aber gespeicherte Lernstaende koennen bei Neustart, Redeploy oder Free-Instanz-Wechsel verloren gehen. Fuer eine Unterrichtseinheit, Testphase oder kurze Sequenz ist das in Ordnung. Fuer dauerhaft archivierte Klassendaten braucht es spaeter externes Storage oder einen bezahlten persistenten Datentraeger.
+Der Service-Role-Key bleibt nur serverseitig in Vercel und wird nicht an den Browser ausgeliefert.
 
-## Ohne Passwortlogik
+## Lokaler Fallback
 
-Das Lehrer*innen-Dashboard ist bewusst offen gehalten:
+Ohne Supabase-Variablen nutzt die App weiterhin:
 
-- kein `TEACHER_DASHBOARD_PASSWORD`
-- kein komplizierter Login
-- direkte Nutzung von `/teacher-entry` und `/teacher`
+`data/kehlmann-reader-store.json`
 
-## Optionale SEB-Absicherung
+Das ist fuer lokale Entwicklung und Render-Testbetrieb praktisch.
 
-Optional kann in Render `SEB_CONFIG_KEY_HASH` gesetzt werden. Ohne diese Variable bleibt die SEB-Erkennung einfacher und die offene Version funktioniert trotzdem.
+## Render Free als einfache Alternative
 
-## Laufzeitdaten
+`render.yaml` bleibt vorhanden. Render Free funktioniert, aber die lokalen Laufzeitdaten sind fluechtig:
 
-Die App erzeugt `data/kehlmann-reader-store.json` beim ersten Start automatisch. Diese Datei ist in `.gitignore` ausgeschlossen und gehoert nicht ins GitHub-Repository.
+- Free Web Services schlafen nach Inaktivitaet ein.
+- Lokale Dateiaenderungen gehen bei Neustart, Redeploy oder Spin-down verloren.
+- Persistent Disks gibt es fuer Free Web Services nicht.
+
+Darum ist Render Free okay fuer kurze Tests, aber Vercel + Supabase ist die bessere Gratis-Variante, wenn Lernstaende stabiler bleiben sollen.
+
+## Grenzen der Gratis-Loesung
+
+Auch Supabase Free ist keine perfekte Archivloesung:
+
+- Projekte koennen bei Inaktivitaet pausiert werden.
+- Free-Projekte haben keine herunterladbaren Backups.
+
+Fuer Unterrichtssequenzen ist das deutlich besser als ein fluechtiges Dateisystem. Fuer dauerhaftes Archivieren waere spaeter ein bezahlter Storage-Plan oder regelmaessiger Export sinnvoll.

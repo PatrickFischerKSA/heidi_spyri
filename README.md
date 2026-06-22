@@ -14,7 +14,17 @@ Interaktive Lese- und Lernumgebung zu Johanna Spyris *Heidi*.
 
 ## Gratis-Hosting
 
-Ja: Das Projekt ist fuer Render Free vorbereitet.
+Empfohlen: **Vercel Hobby + Supabase Free**.
+
+Das ist stabiler als reines Render Free, weil Lernstaende dann in Supabase/Postgres liegen und nicht im fluechtigen Dateisystem eines Free-Webservices.
+
+- `vercel.json` fuer Vercel Serverless Express
+- `api/index.mjs` als Vercel-Entry
+- `sql/supabase-reader-store.sql` fuer die Store-Tabelle
+- Supabase wird automatisch genutzt, wenn `SUPABASE_URL` und `SUPABASE_SERVICE_ROLE_KEY` gesetzt sind
+- ohne Supabase bleibt der lokale Datei-Store als Fallback aktiv
+
+Render Free bleibt als einfache Alternative vorbereitet:
 
 - `render.yaml` nutzt `plan: free`
 - Build: `npm ci`
@@ -22,7 +32,7 @@ Ja: Das Projekt ist fuer Render Free vorbereitet.
 - Healthcheck: `/`
 - keine Lehrer*innen-Passwortlogik
 
-Einschraenkung der Gratis-Loesung: Render Free hat keinen dauerhaft garantierten Dateispeicher. Lernstaende funktionieren im laufenden Unterricht, koennen aber bei Neustart oder Redeploy verloren gehen. Fuer dauerhaft gesicherte Klassendaten braucht es spaeter externes Storage oder einen bezahlten persistenten Datentraeger.
+Einschraenkung: Auch Supabase Free kann bei laengerer Inaktivitaet pausieren und ist keine perfekte Archivloesung. Fuer Unterrichtssequenzen ist es aber deutlich stabiler als lokales Speichern auf Render Free.
 
 ## Start
 
