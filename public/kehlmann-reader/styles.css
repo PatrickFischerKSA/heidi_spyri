@@ -35,8 +35,7 @@ body {
   overflow: hidden;
   z-index: 0;
   pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(226, 219, 205, 0.56) 0%, rgba(213, 205, 191, 0.54) 100%);
+  background: #263327;
 }
 
 .site-background-video {
@@ -55,8 +54,7 @@ body {
   position: absolute;
   inset: -24px;
   background:
-    linear-gradient(180deg, rgba(56, 50, 45, 0.18) 0%, rgba(34, 31, 28, 0.24) 100%),
-    url("/reader/assets/heidi-alp-background.png") 54% 14% / 116% auto no-repeat;
+    linear-gradient(180deg, rgba(56, 50, 45, 0.18) 0%, rgba(34, 31, 28, 0.24) 100%);
   filter: blur(6px) saturate(0.94) contrast(1.14) brightness(0.74);
   transform: scale(1.02);
   opacity: 0.28;

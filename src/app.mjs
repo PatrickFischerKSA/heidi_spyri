@@ -25,7 +25,6 @@ const CLASS_COOKIE = "kehlmann_reader_class";
 const TEACHER_COOKIE = "kehlmann_teacher_access";
 const SEB_CONFIG_KEY_HASH = process.env.SEB_CONFIG_KEY_HASH || process.env.KEHLMANN_SEB_CONFIG_KEY_HASH || "";
 const READER_PDF_SOURCE = "/reader/assets/heidi-volltext.html";
-const BACKGROUND_IMAGE = "/reader/assets/heidi-alp-background.png";
 const BACKGROUND_VIDEO = "/reader/assets/heidi-background.mp4";
 const ASSET_VERSION = process.env.RENDER_GIT_COMMIT || String(Date.now());
 
@@ -78,8 +77,7 @@ function renderShellPage({ title, body, bodyClass = "" }) {
             overflow: hidden;
             z-index: 0;
             pointer-events: none;
-            background:
-              linear-gradient(180deg, rgba(226, 219, 205, 0.56) 0%, rgba(213, 205, 191, 0.54) 100%);
+            background: #263327;
           }
           .site-background-video {
             position: absolute;
@@ -96,8 +94,7 @@ function renderShellPage({ title, body, bodyClass = "" }) {
             position: absolute;
             inset: -24px;
             background:
-              linear-gradient(180deg, rgba(56, 50, 45, 0.18) 0%, rgba(34, 31, 28, 0.24) 100%),
-              url("${assetUrl(BACKGROUND_IMAGE)}") 54% 14% / 116% auto no-repeat;
+              linear-gradient(180deg, rgba(56, 50, 45, 0.18) 0%, rgba(34, 31, 28, 0.24) 100%);
             filter: blur(6px) saturate(0.94) contrast(1.14) brightness(0.74);
             transform: scale(1.02);
             opacity: 0.28;
@@ -146,6 +143,21 @@ function renderShellPage({ title, body, bodyClass = "" }) {
             box-shadow: var(--shadow);
             padding: 24px;
             backdrop-filter: blur(14px);
+          }
+          body.login-page .page {
+            min-height: 100vh;
+            align-content: center;
+          }
+          body.login-page .panel {
+            max-width: 980px;
+            background: rgba(246, 248, 242, 0.88);
+            border-color: rgba(49, 67, 53, 0.2);
+          }
+          body.login-page h1 {
+            font-size: clamp(3rem, 7vw, 5.2rem);
+          }
+          body.login-page .notice {
+            background: rgba(238, 228, 216, 0.9);
           }
           body.teacher-entry-page {
             background: #edf0ea;
@@ -459,7 +471,7 @@ function renderShellPage({ title, body, bodyClass = "" }) {
       </head>
       <body class="${bodyClass}">
         <div class="site-background" aria-hidden="true">
-          <video class="site-background-video" data-background-video autoplay muted loop playsinline poster="${assetUrl(BACKGROUND_IMAGE)}">
+          <video class="site-background-video" data-background-video autoplay muted loop playsinline>
             <source src="${assetUrl(BACKGROUND_VIDEO)}" type="video/mp4">
           </video>
         </div>
@@ -798,6 +810,7 @@ function renderStudentAccessPage({ mode, lessonId, errorText = "" }) {
 
   return renderShellPage({
     title,
+    bodyClass: "login-page",
     body: `
       <main class="page">
         <section class="panel">
@@ -866,7 +879,7 @@ function renderTeacherPage() {
       </head>
       <body>
         <div class="site-background" aria-hidden="true">
-          <video class="site-background-video" data-background-video autoplay muted loop playsinline poster="${assetUrl(BACKGROUND_IMAGE)}">
+          <video class="site-background-video" data-background-video autoplay muted loop playsinline>
             <source src="${assetUrl(BACKGROUND_VIDEO)}" type="video/mp4">
           </video>
         </div>
@@ -894,7 +907,7 @@ function renderReaderPage(mode, lessonId) {
       </head>
       <body>
         <div class="site-background" aria-hidden="true">
-          <video class="site-background-video" data-background-video autoplay muted loop playsinline poster="${assetUrl(BACKGROUND_IMAGE)}">
+          <video class="site-background-video" data-background-video autoplay muted loop playsinline>
             <source src="${assetUrl(BACKGROUND_VIDEO)}" type="video/mp4">
           </video>
         </div>
@@ -922,11 +935,6 @@ function hasStudentSession(request) {
 
 function clearStudentCookies(response) {
   response.append("Set-Cookie", `${OPEN_COOKIE}=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax`);
-  response.append("Set-Cookie", `${STUDENT_COOKIE}=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax`);
-  response.append("Set-Cookie", `${CLASS_COOKIE}=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax`);
-}
-
-function clearStudentSessionOnly(response) {
   response.append("Set-Cookie", `${STUDENT_COOKIE}=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax`);
   response.append("Set-Cookie", `${CLASS_COOKIE}=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax`);
 }
@@ -1050,11 +1058,8 @@ export function createApp() {
     }
 
     if (!(await hasValidStudentSession(request))) {
-      clearStudentSessionOnly(response);
-      response.send(renderStudentAccessPage({
-        mode: "open",
-        errorText: "Die fruehere Reader-Sitzung war nicht mehr gueltig. Bitte melde dich mit Namen oder Kuerzel erneut an."
-      }));
+      clearStudentCookies(response);
+      response.redirect(303, "/open");
       return;
     }
 
@@ -1068,12 +1073,8 @@ export function createApp() {
     }
 
     if (!(await hasValidStudentSession(request))) {
-      clearStudentSessionOnly(response);
-      response.send(renderStudentAccessPage({
-        mode: "open",
-        lessonId: request.params.lessonId,
-        errorText: "Die fruehere Reader-Sitzung war nicht mehr gueltig. Bitte melde dich mit Namen oder Kuerzel erneut an."
-      }));
+      clearStudentCookies(response);
+      response.redirect(303, `/open/lesson/${encodeURIComponent(request.params.lessonId)}`);
       return;
     }
 
@@ -1092,11 +1093,8 @@ export function createApp() {
     }
 
     if (!(await hasValidStudentSession(request))) {
-      clearStudentSessionOnly(response);
-      response.send(renderStudentAccessPage({
-        mode: "seb",
-        errorText: "Die fruehere Reader-Sitzung war nicht mehr gueltig. Bitte melde dich mit Namen oder Kuerzel erneut an."
-      }));
+      clearStudentCookies(response);
+      response.redirect(303, "/seb");
       return;
     }
 
@@ -1115,12 +1113,8 @@ export function createApp() {
     }
 
     if (!(await hasValidStudentSession(request))) {
-      clearStudentSessionOnly(response);
-      response.send(renderStudentAccessPage({
-        mode: "seb",
-        lessonId: request.params.lessonId,
-        errorText: "Die fruehere Reader-Sitzung war nicht mehr gueltig. Bitte melde dich mit Namen oder Kuerzel erneut an."
-      }));
+      clearStudentCookies(response);
+      response.redirect(303, `/seb/lesson/${encodeURIComponent(request.params.lessonId)}`);
       return;
     }
 
