@@ -88,7 +88,7 @@ const theoryProfiles = {
       "gott",
       "gebet",
       "grossmama",
-      "großmama",
+      "grossmama",
       "grossmutter",
       "pfarrer",
       "religiös",
@@ -112,7 +112,7 @@ const theoryProfiles = {
       "griffel",
       "lernen",
       "grossvater",
-      "großvater"
+      "grossvater"
     ]
   },
   "stadt-land": {
@@ -259,10 +259,6 @@ function aliasVariants(value = "") {
   if (plain.includes("ü")) {
     variants.add(plain.replaceAll("ü", "ue"));
   }
-  if (plain.includes("ß")) {
-    variants.add(plain.replaceAll("ß", "ss"));
-  }
-
   for (const item of [...variants]) {
     if (item.length > 5) {
       for (const suffix of ["en", "er", "e", "n", "s"]) {
@@ -381,7 +377,7 @@ function instructionForTask(prompt, { signalWords = [], relatedTheoryIds = [], k
     : "Arbeite mit mindestens einem genauen Textdetail oder Wortlaut aus der Passage.";
   const theoryPart = relatedTheoryIds.length
     ? `Verbinde deine Beobachtung am Schluss mit ${relatedTheoryIds.map((id) => theoryProfiles[id]?.label).filter(Boolean).slice(0, 2).join(" oder ")}.`
-    : "Schließe mit einer klaren Deutung oder Funktionsaussage.";
+    : "Schliesse mit einer klaren Deutung oder Funktionsaussage.";
   const opening = kind === "transfer"
     ? "Beziehe Passage und Deutungslinse ausdrücklich aufeinander."
     : kind === "resource"
@@ -498,9 +494,9 @@ export const theoryResources = [
   },
   {
     "id": "religion",
-    "title": "Dossier: Religion, Großmutter und Mehrfachadressierung",
+    "title": "Dossier: Religion, Grossmutter und Mehrfachadressierung",
     "shortTitle": "Religion",
-    "sourceTitle": "Dossier: Religion, Großmutter und Mehrfachadressierung",
+    "sourceTitle": "Dossier: Religion, Grossmutter und Mehrfachadressierung",
     "mediaType": "html",
     "openUrl": "/reader/assets/heidi-religion-mehrfachadressierung.html",
     "embedUrl": "/reader/assets/heidi-religion-mehrfachadressierung.html",
@@ -508,7 +504,7 @@ export const theoryResources = [
     "keyIdeas": [
       "Gottvertrauen",
       "Zweifel",
-      "Großmama",
+      "Grossmama",
       "Pfarrer"
     ],
     "questions": [
@@ -538,7 +534,7 @@ export const theoryResources = [
     ],
     "questions": [
       "Welche Naturdetails verändern Heidis Verhalten?",
-      "Welches pädagogische Modell steht hinter Großvater, Peter oder der Großmama?"
+      "Welches pädagogische Modell steht hinter Grossvater, Peter oder der Grossmama?"
     ],
     "transferPrompts": [
       "Nutze Natur als Leselinse und sichere die Deutung an einer konkreten Romanstelle.",
@@ -559,7 +555,7 @@ export const theoryResources = [
       "Heidi",
       "Peter",
       "Klara",
-      "Großvater",
+      "Grossvater",
       "Fürsorge"
     ],
     "questions": [
@@ -927,7 +923,7 @@ const rawReaderModules = [
   },
   {
     "id": "modul-02",
-    "title": "Großvater, Peter und Natur",
+    "title": "Grossvater, Peter und Natur",
     "summary": "Natur, Tiere und Schule zeigen konkurrierende Erziehungsmodelle.",
     "entries": [
       {
@@ -936,9 +932,9 @@ const rawReaderModules = [
         "passageLabel": "Leitfrage 6",
         "pageHint": "Volltext im linken Lesefenster",
         "pageNumber": 6,
-        "context": "Wer ist Geißenpeter? Charakterisieren Sie ihn. Welche Aufgaben erledigt er? Warum arbeitet er so viel?",
+        "context": "Wer ist Geissenpeter? Charakterisieren Sie ihn. Welche Aufgaben erledigt er? Warum arbeitet er so viel?",
         "signalWords": [
-          "Geißenpeter",
+          "Geissenpeter",
           "Peter"
         ],
         "relatedTheoryIds": [
@@ -946,7 +942,7 @@ const rawReaderModules = [
           "sprache-erzaehlen"
         ],
         "prompts": [
-          "Wer ist Geißenpeter? Charakterisieren Sie ihn. Welche Aufgaben erledigt er? Warum arbeitet er so viel?"
+          "Wer ist Geissenpeter? Charakterisieren Sie ihn. Welche Aufgaben erledigt er? Warum arbeitet er so viel?"
         ],
         "focusTasks": []
       },
@@ -976,10 +972,10 @@ const rawReaderModules = [
         "passageLabel": "Leitfrage 8",
         "pageHint": "Volltext im linken Lesefenster",
         "pageNumber": 8,
-        "context": "Wie wird die Natur beschrieben? Wie geht Geißenpeter mit den Tieren um? Wo setzt ihm Heidi Grenzen? Wie gehen die beiden miteinander um? Beschreiben Sie den Gesprächston.",
+        "context": "Wie wird die Natur beschrieben? Wie geht Geissenpeter mit den Tieren um? Wo setzt ihm Heidi Grenzen? Wie gehen die beiden miteinander um? Beschreiben Sie den Gesprächston.",
         "signalWords": [
           "Heidi",
-          "Geißenpeter",
+          "Geissenpeter",
           "Peter"
         ],
         "relatedTheoryIds": [
@@ -987,7 +983,7 @@ const rawReaderModules = [
           "sprache-erzaehlen"
         ],
         "prompts": [
-          "Wie wird die Natur beschrieben? Wie geht Geißenpeter mit den Tieren um? Wo setzt ihm Heidi Grenzen? Wie gehen die beiden miteinander um? Beschreiben Sie den Gesprächston."
+          "Wie wird die Natur beschrieben? Wie geht Geissenpeter mit den Tieren um? Wo setzt ihm Heidi Grenzen? Wie gehen die beiden miteinander um? Beschreiben Sie den Gesprächston."
         ],
         "focusTasks": []
       },
@@ -997,9 +993,9 @@ const rawReaderModules = [
         "passageLabel": "Leitfrage 9",
         "pageHint": "Volltext im linken Lesefenster",
         "pageNumber": 9,
-        "context": "Was hat es zu bedeuten, dass Geißenpeter behauptet, die Berge hätten keine Namen?",
+        "context": "Was hat es zu bedeuten, dass Geissenpeter behauptet, die Berge hätten keine Namen?",
         "signalWords": [
-          "Geißenpeter",
+          "Geissenpeter",
           "Peter"
         ],
         "relatedTheoryIds": [
@@ -1007,7 +1003,7 @@ const rawReaderModules = [
           "sprache-erzaehlen"
         ],
         "prompts": [
-          "Was hat es zu bedeuten, dass Geißenpeter behauptet, die Berge hätten keine Namen?"
+          "Was hat es zu bedeuten, dass Geissenpeter behauptet, die Berge hätten keine Namen?"
         ],
         "focusTasks": []
       },
@@ -1017,10 +1013,10 @@ const rawReaderModules = [
         "passageLabel": "Leitfrage 10",
         "pageHint": "Volltext im linken Lesefenster",
         "pageNumber": 10,
-        "context": "Wie spricht Almöhi Geißenpeter an? Was hat es mit dem militärischen Unterton auf sich?",
+        "context": "Wie spricht Almöhi Geissenpeter an? Was hat es mit dem militärischen Unterton auf sich?",
         "signalWords": [
           "Almöhi",
-          "Geißenpeter",
+          "Geissenpeter",
           "Peter"
         ],
         "relatedTheoryIds": [
@@ -1028,7 +1024,7 @@ const rawReaderModules = [
           "sprache-erzaehlen"
         ],
         "prompts": [
-          "Wie spricht Almöhi Geißenpeter an? Was hat es mit dem militärischen Unterton auf sich?"
+          "Wie spricht Almöhi Geissenpeter an? Was hat es mit dem militärischen Unterton auf sich?"
         ],
         "focusTasks": []
       }
@@ -1036,7 +1032,7 @@ const rawReaderModules = [
   },
   {
     "id": "modul-03",
-    "title": "Großmutter, Pfarrer und Weggang",
+    "title": "Grossmutter, Pfarrer und Weggang",
     "summary": "Religion, Fürsorge und sozialer Druck treiben den Ortswechsel an.",
     "entries": [
       {
@@ -1045,9 +1041,9 @@ const rawReaderModules = [
         "passageLabel": "Leitfrage 11",
         "pageHint": "Volltext im linken Lesefenster",
         "pageNumber": 11,
-        "context": "Interpretieren Sie die Formulierung «am Griffel nagen». Inwiefern beschreibt sie Geißenpeters Verhältnis zur Schule?",
+        "context": "Interpretieren Sie die Formulierung «am Griffel nagen». Inwiefern beschreibt sie Geissenpeters Verhältnis zur Schule?",
         "signalWords": [
-          "Geißenpeter",
+          "Geissenpeter",
           "Peter"
         ],
         "relatedTheoryIds": [
@@ -1055,7 +1051,7 @@ const rawReaderModules = [
           "figuren-beziehungen"
         ],
         "prompts": [
-          "Interpretieren Sie die Formulierung «am Griffel nagen». Inwiefern beschreibt sie Geißenpeters Verhältnis zur Schule?"
+          "Interpretieren Sie die Formulierung «am Griffel nagen». Inwiefern beschreibt sie Geissenpeters Verhältnis zur Schule?"
         ],
         "focusTasks": []
       },
@@ -1065,18 +1061,18 @@ const rawReaderModules = [
         "passageLabel": "Leitfrage 12",
         "pageHint": "Volltext im linken Lesefenster",
         "pageNumber": 12,
-        "context": "Wie erlebt Heidi den Winter? Wie verläuft der Besuch bei der Großmutter? Was tut Almöhi? Inwiefern ist diese Entwicklung außergewöhnlich?",
+        "context": "Wie erlebt Heidi den Winter? Wie verläuft der Besuch bei der Grossmutter? Was tut Almöhi? Inwiefern ist diese Entwicklung aussergewöhnlich?",
         "signalWords": [
           "Heidi",
           "Almöhi",
-          "Großmutter"
+          "Grossmutter"
         ],
         "relatedTheoryIds": [
           "religion",
           "figuren-beziehungen"
         ],
         "prompts": [
-          "Wie erlebt Heidi den Winter? Wie verläuft der Besuch bei der Großmutter? Was tut Almöhi? Inwiefern ist diese Entwicklung außergewöhnlich?"
+          "Wie erlebt Heidi den Winter? Wie verläuft der Besuch bei der Grossmutter? Was tut Almöhi? Inwiefern ist diese Entwicklung aussergewöhnlich?"
         ],
         "focusTasks": []
       },
@@ -1086,17 +1082,17 @@ const rawReaderModules = [
         "passageLabel": "Leitfrage 13",
         "pageHint": "Volltext im linken Lesefenster",
         "pageNumber": 13,
-        "context": "Beschreiben Sie die Beziehung zwischen Heidi und der Großmutter.",
+        "context": "Beschreiben Sie die Beziehung zwischen Heidi und der Grossmutter.",
         "signalWords": [
           "Heidi",
-          "Großmutter"
+          "Grossmutter"
         ],
         "relatedTheoryIds": [
           "religion",
           "figuren-beziehungen"
         ],
         "prompts": [
-          "Beschreiben Sie die Beziehung zwischen Heidi und der Großmutter."
+          "Beschreiben Sie die Beziehung zwischen Heidi und der Grossmutter."
         ],
         "focusTasks": []
       },
@@ -1387,7 +1383,7 @@ const rawReaderModules = [
         "passageLabel": "Leitfrage 27",
         "pageHint": "Volltext im linken Lesefenster",
         "pageNumber": 27,
-        "context": "Wie reagiert Herr Sesemann auf die Missstimmung in seinem Haus? Wer ergreift für wen Partei? Wie äußert sich Fräulein Rottenmeier? Welchen Bericht erstattet der Kandidat? Was berichtet Klara?",
+        "context": "Wie reagiert Herr Sesemann auf die Missstimmung in seinem Haus? Wer ergreift für wen Partei? Wie äussert sich Fräulein Rottenmeier? Welchen Bericht erstattet der Kandidat? Was berichtet Klara?",
         "signalWords": [
           "Rottenmeier",
           "Sesemann",
@@ -1398,7 +1394,7 @@ const rawReaderModules = [
           "koerper-gesundheit"
         ],
         "prompts": [
-          "Wie reagiert Herr Sesemann auf die Missstimmung in seinem Haus? Wer ergreift für wen Partei? Wie äußert sich Fräulein Rottenmeier? Welchen Bericht erstattet der Kandidat? Was berichtet Klara?"
+          "Wie reagiert Herr Sesemann auf die Missstimmung in seinem Haus? Wer ergreift für wen Partei? Wie äussert sich Fräulein Rottenmeier? Welchen Bericht erstattet der Kandidat? Was berichtet Klara?"
         ],
         "focusTasks": []
       },
@@ -1408,7 +1404,7 @@ const rawReaderModules = [
         "passageLabel": "Leitfrage 28",
         "pageHint": "Volltext im linken Lesefenster",
         "pageNumber": 28,
-        "context": "Schildern Sie die Ankunft der Großmama. Wie versteht sich Heidi mit ihr? Wie schafft sie es, Heidis Vertrauen zu gewinnen? Kommentieren Sie die Gespräche über Religion. Erläutern Sie Heidis Zweifel an Gott. Wie lernt Heidi doch noch lesen?",
+        "context": "Schildern Sie die Ankunft der Grossmama. Wie versteht sich Heidi mit ihr? Wie schafft sie es, Heidis Vertrauen zu gewinnen? Kommentieren Sie die Gespräche über Religion. Erläutern Sie Heidis Zweifel an Gott. Wie lernt Heidi doch noch lesen?",
         "signalWords": [
           "Heidi"
         ],
@@ -1417,7 +1413,7 @@ const rawReaderModules = [
           "koerper-gesundheit"
         ],
         "prompts": [
-          "Schildern Sie die Ankunft der Großmama. Wie versteht sich Heidi mit ihr? Wie schafft sie es, Heidis Vertrauen zu gewinnen? Kommentieren Sie die Gespräche über Religion. Erläutern Sie Heidis Zweifel an Gott. Wie lernt Heidi doch noch lesen?"
+          "Schildern Sie die Ankunft der Grossmama. Wie versteht sich Heidi mit ihr? Wie schafft sie es, Heidis Vertrauen zu gewinnen? Kommentieren Sie die Gespräche über Religion. Erläutern Sie Heidis Zweifel an Gott. Wie lernt Heidi doch noch lesen?"
         ],
         "focusTasks": []
       },
@@ -1604,7 +1600,7 @@ const rawReaderModules = [
         "passageLabel": "Leitfrage 37",
         "pageHint": "Volltext im linken Lesefenster",
         "pageNumber": 37,
-        "context": "Beschreiben Sie das Wiedersehen mit dem Doktor und seine Beziehung zu Heidi. Interpretieren Sie die Geschenke von Klara und der Großmama.",
+        "context": "Beschreiben Sie das Wiedersehen mit dem Doktor und seine Beziehung zu Heidi. Interpretieren Sie die Geschenke von Klara und der Grossmama.",
         "signalWords": [
           "Heidi",
           "Klara",
@@ -1615,7 +1611,7 @@ const rawReaderModules = [
           "figuren-beziehungen"
         ],
         "prompts": [
-          "Beschreiben Sie das Wiedersehen mit dem Doktor und seine Beziehung zu Heidi. Interpretieren Sie die Geschenke von Klara und der Großmama."
+          "Beschreiben Sie das Wiedersehen mit dem Doktor und seine Beziehung zu Heidi. Interpretieren Sie die Geschenke von Klara und der Grossmama."
         ],
         "focusTasks": []
       },
@@ -1625,10 +1621,10 @@ const rawReaderModules = [
         "passageLabel": "Leitfrage 38",
         "pageHint": "Volltext im linken Lesefenster",
         "pageNumber": 38,
-        "context": "Wie schafft es Heidi, den Doktor seine Trauer etwas vergessen zu lassen? Interpretieren Sie das Gedicht und dessen religiöses Programm. Wie halten Heidi und der Doktor Geißenpeter bei Laune?",
+        "context": "Wie schafft es Heidi, den Doktor seine Trauer etwas vergessen zu lassen? Interpretieren Sie das Gedicht und dessen religiöses Programm. Wie halten Heidi und der Doktor Geissenpeter bei Laune?",
         "signalWords": [
           "Heidi",
-          "Geißenpeter",
+          "Geissenpeter",
           "Doktor",
           "Peter"
         ],
@@ -1637,7 +1633,7 @@ const rawReaderModules = [
           "figuren-beziehungen"
         ],
         "prompts": [
-          "Wie schafft es Heidi, den Doktor seine Trauer etwas vergessen zu lassen? Interpretieren Sie das Gedicht und dessen religiöses Programm. Wie halten Heidi und der Doktor Geißenpeter bei Laune?"
+          "Wie schafft es Heidi, den Doktor seine Trauer etwas vergessen zu lassen? Interpretieren Sie das Gedicht und dessen religiöses Programm. Wie halten Heidi und der Doktor Geissenpeter bei Laune?"
         ],
         "focusTasks": []
       },
@@ -1667,11 +1663,11 @@ const rawReaderModules = [
         "passageLabel": "Leitfrage 40",
         "pageHint": "Volltext im linken Lesefenster",
         "pageNumber": 40,
-        "context": "Inwiefern löst Almöhi im Winter sein Versprechen ein? Wo wohnt er mit Heidi? Wie verläuft Heidis Schulweg? Welchen Eindruck macht das auf Geißenpeter?",
+        "context": "Inwiefern löst Almöhi im Winter sein Versprechen ein? Wo wohnt er mit Heidi? Wie verläuft Heidis Schulweg? Welchen Eindruck macht das auf Geissenpeter?",
         "signalWords": [
           "Heidi",
           "Almöhi",
-          "Geißenpeter",
+          "Geissenpeter",
           "Peter"
         ],
         "relatedTheoryIds": [
@@ -1679,7 +1675,7 @@ const rawReaderModules = [
           "figuren-beziehungen"
         ],
         "prompts": [
-          "Inwiefern löst Almöhi im Winter sein Versprechen ein? Wo wohnt er mit Heidi? Wie verläuft Heidis Schulweg? Welchen Eindruck macht das auf Geißenpeter?"
+          "Inwiefern löst Almöhi im Winter sein Versprechen ein? Wo wohnt er mit Heidi? Wie verläuft Heidis Schulweg? Welchen Eindruck macht das auf Geissenpeter?"
         ],
         "focusTasks": []
       }
@@ -1736,9 +1732,9 @@ const rawReaderModules = [
         "passageLabel": "Leitfrage 43",
         "pageHint": "Volltext im linken Lesefenster",
         "pageNumber": 43,
-        "context": "Erklären Sie Geißenpeters unwirsche Reaktion auf die Ankunft der Gäste aus Frankfurt. Inwiefern fühlt er sich von den fremden Gästen bedroht?",
+        "context": "Erklären Sie Geissenpeters unwirsche Reaktion auf die Ankunft der Gäste aus Frankfurt. Inwiefern fühlt er sich von den fremden Gästen bedroht?",
         "signalWords": [
-          "Geißenpeter",
+          "Geissenpeter",
           "Frankfurt",
           "Peter"
         ],
@@ -1747,7 +1743,7 @@ const rawReaderModules = [
           "stadt-land"
         ],
         "prompts": [
-          "Erklären Sie Geißenpeters unwirsche Reaktion auf die Ankunft der Gäste aus Frankfurt. Inwiefern fühlt er sich von den fremden Gästen bedroht?"
+          "Erklären Sie Geissenpeters unwirsche Reaktion auf die Ankunft der Gäste aus Frankfurt. Inwiefern fühlt er sich von den fremden Gästen bedroht?"
         ],
         "focusTasks": []
       },
@@ -1777,9 +1773,9 @@ const rawReaderModules = [
         "passageLabel": "Leitfrage 45",
         "pageHint": "Volltext im linken Lesefenster",
         "pageNumber": 45,
-        "context": "Wie reflektiert Klara ihre körperliche Behinderung? Wie kommt es dazu, dass Klara auf der Alp übernachtet? Wie verbringen die beiden Freundinnen die Zeit auf der Alp? Wie kommunizieren sie mit der Großmutter, die nach Bad Ragaz zurückgekehrt ist? Welche Fortschritte macht Klara?",
+        "context": "Wie reflektiert Klara ihre körperliche Behinderung? Wie kommt es dazu, dass Klara auf der Alp übernachtet? Wie verbringen die beiden Freundinnen die Zeit auf der Alp? Wie kommunizieren sie mit der Grossmutter, die nach Bad Ragaz zurückgekehrt ist? Welche Fortschritte macht Klara?",
         "signalWords": [
-          "Großmutter",
+          "Grossmutter",
           "Klara"
         ],
         "relatedTheoryIds": [
@@ -1787,7 +1783,7 @@ const rawReaderModules = [
           "stadt-land"
         ],
         "prompts": [
-          "Wie reflektiert Klara ihre körperliche Behinderung? Wie kommt es dazu, dass Klara auf der Alp übernachtet? Wie verbringen die beiden Freundinnen die Zeit auf der Alp? Wie kommunizieren sie mit der Großmutter, die nach Bad Ragaz zurückgekehrt ist? Welche Fortschritte macht Klara?"
+          "Wie reflektiert Klara ihre körperliche Behinderung? Wie kommt es dazu, dass Klara auf der Alp übernachtet? Wie verbringen die beiden Freundinnen die Zeit auf der Alp? Wie kommunizieren sie mit der Grossmutter, die nach Bad Ragaz zurückgekehrt ist? Welche Fortschritte macht Klara?"
         ],
         "focusTasks": []
       }
@@ -1882,7 +1878,7 @@ const rawReaderModules = [
         "passageLabel": "Leitfrage 50",
         "pageHint": "Volltext im linken Lesefenster",
         "pageNumber": 50,
-        "context": "Warum bekommt Peter am Ende noch Geld von Herrn Sesemann? Welche Regelung trifft Sesemann? Warum lehnt Almöhi eine Entschädigung ab? Was will er stattdessen für Heidi? Was wünscht sich Heidi? Kommentieren Sie das Gespräch zwischen den beiden Großmüttern.",
+        "context": "Warum bekommt Peter am Ende noch Geld von Herrn Sesemann? Welche Regelung trifft Sesemann? Warum lehnt Almöhi eine Entschädigung ab? Was will er stattdessen für Heidi? Was wünscht sich Heidi? Kommentieren Sie das Gespräch zwischen den beiden Grossmüttern.",
         "signalWords": [
           "Heidi",
           "Almöhi",
@@ -1894,7 +1890,7 @@ const rawReaderModules = [
           "religion"
         ],
         "prompts": [
-          "Warum bekommt Peter am Ende noch Geld von Herrn Sesemann? Welche Regelung trifft Sesemann? Warum lehnt Almöhi eine Entschädigung ab? Was will er stattdessen für Heidi? Was wünscht sich Heidi? Kommentieren Sie das Gespräch zwischen den beiden Großmüttern."
+          "Warum bekommt Peter am Ende noch Geld von Herrn Sesemann? Welche Regelung trifft Sesemann? Warum lehnt Almöhi eine Entschädigung ab? Was will er stattdessen für Heidi? Was wünscht sich Heidi? Kommentieren Sie das Gespräch zwischen den beiden Grossmüttern."
         ],
         "focusTasks": []
       }
@@ -1939,9 +1935,9 @@ export const lessonSets = [
         ],
         "taskGuide": "Eine tragfähige Antwort zeigt Dete nicht einfach als herzlos, sondern als Figur zwischen Erwerbsdruck, Familienpflicht und Abwehr von Verantwortung. Entscheidend ist, dass Heidi als Kind weitergereicht wird, während Erwachsene über ihren Aufenthaltsort entscheiden.",
         "answerGuides": [
-          "Wichtig ist die soziale Lage: Dete sucht Arbeit in Frankfurt und gibt die Verantwortung an den Großvater zurück. Dadurch wird Heidis Abgabe als ökonomisch und familiär bedingte Verschiebung lesbar.",
-          "Dete erscheint dadurch ambivalent. Sie handelt eigennützig, aber nicht aus bloßer Bosheit; sie nutzt eine Möglichkeit zum sozialen Aufstieg und blendet Heidis Perspektive aus.",
-          "Aussagekräftig ist, dass Dete sagt, das Kind müsse beim Großvater bleiben. Die Formulierung zeigt, dass Heidi nicht selbst entscheidet, sondern als Zuständigkeit zwischen Erwachsenen verschoben wird."
+          "Wichtig ist die soziale Lage: Dete sucht Arbeit in Frankfurt und gibt die Verantwortung an den Grossvater zurück. Dadurch wird Heidis Abgabe als ökonomisch und familiär bedingte Verschiebung lesbar.",
+          "Diese Information verändert den Blick auf Dete, weil sie ambivalent erscheint: eigennützig und rücksichtslos gegenüber Heidi, aber zugleich von Arbeitsdruck und sozialem Aufstiegswunsch geprägt.",
+          "Als Romanformulierung ist aussagekräftig, dass Dete sagt, das Kind müsse beim Grossvater bleiben. Diese Formulierung zeigt, dass über Heidi verfügt wird: Sie entscheidet nicht selbst, sondern wird als Zuständigkeit zwischen Erwachsenen verschoben."
         ]
       },
       {
@@ -1973,16 +1969,16 @@ export const lessonSets = [
         ],
         "taskGuide": "Die Antwort sollte zeigen, dass die Alp nicht Kulisse ist. Luft, Licht, Weite, Tiere und Bewegung eröffnen Heidi einen Erfahrungsraum, der dem Gerede und der sozialen Kontrolle im Tal entgegengesetzt ist.",
         "answerGuides": [
-          "Prägend sind Wärme, Duft, Licht, Höhe, Bewegung und der Kontakt zu den Geißen. Diese Eindrücke machen die Alp körperlich erfahrbar.",
-          "Im Tal wird über Heidi gesprochen und über sie entschieden; auf der Alp kann sie schauen, laufen und reagieren. Der Raum gibt ihr Handlungsspielraum zurück.",
-          "Geeignet ist eine Stelle, in der Heidi sich von Kleidern befreit, mit Peter und den Geißen geht oder auf die Höhe reagiert. Entscheidend ist die Verbindung von Körperentlastung und neuer Freiheit."
+          "Heidis Ankunft wird durch Sinneseindrücke wie Wärme, Duft, Licht, Höhe, Bewegung und den Kontakt zu den Geissen geprägt. Diese Eindrücke machen die Alp körperlich erfahrbar.",
+          "Die Alp unterscheidet sich vom sozialen Druck im Tal, weil Heidi dort nicht nur besprochen und verschoben wird. Auf der Alp kann sie schauen, laufen und reagieren; der Raum gibt ihr Handlungsspielraum zurück.",
+          "Eine konkrete Textstelle zur körperlichen oder seelischen Entlastung kann zeigen, wie Heidi sich von Kleidern befreit, mit Peter und den Geissen geht oder auf die Höhe reagiert. Entscheidend ist die Verbindung von Körperentlastung und neuer Freiheit."
         ]
       }
     ]
   },
   {
     "id": "lektion-02",
-    "title": "Großvater, Peter und Natur",
+    "title": "Grossvater, Peter und Natur",
     "summary": "Natur, Tiere und Schule zeigen konkurrierende Erziehungsmodelle.",
     "moduleIds": [
       "modul-02"
@@ -2005,7 +2001,7 @@ export const lessonSets = [
         "resourceId": "natur-paedagogik",
         "title": "Naturpädagogik: Lernen mit Tieren und Gelände",
         "summary": "Das Material macht sichtbar, dass Lernen auf der Alp über Beobachtung, Bewegung, Verantwortung und Grenzen geschieht.",
-        "task": "Vergleiche Peters Umgang mit den Geißen mit Heidis Blick auf Tiere und Landschaft. Zeige, welches Erziehungsmodell daraus entsteht.",
+        "task": "Vergleiche Peters Umgang mit den Geissen mit Heidis Blick auf Tiere und Landschaft. Zeige, welches Erziehungsmodell daraus entsteht.",
         "questionTasks": [
           "Welche Regeln lernt Heidi nicht aus einem Buch, sondern aus der Situation?",
           "Wie korrigiert Heidi Peters Verhalten gegenüber den Tieren?",
@@ -2014,32 +2010,32 @@ export const lessonSets = [
         "taskGuide": "Eine gute Antwort arbeitet heraus, dass Lernen hier praktisch, situativ und körpernah geschieht. Heidi lernt an Gelände, Tieren und Beziehungen; zugleich wirkt sie selbst erzieherisch auf Peter ein.",
         "answerGuides": [
           "Heidi lernt Rücksicht auf Tiere, Orientierung im Gelände, gemeinsames Essen und Grenzen im Umgang mit Gefahr. Diese Regeln entstehen aus Erfahrung, nicht aus Unterricht.",
-          "Sie widerspricht Peter, wenn er grob mit den Geißen umgeht, und nimmt die Tiere als empfindsame Wesen wahr. Dadurch begrenzt sie seine Härte.",
-          "Die Natur stiftet Erfahrungen, fordert Verantwortung und macht Folgen unmittelbar sichtbar. Sie ist deshalb ein pädagogischer Raum, nicht bloß eine schöne Umgebung."
+          "Heidi korrigiert Peters Verhalten gegenüber den Tieren, indem sie widerspricht, wenn er grob mit den Geissen umgeht. Weil sie die Tiere als empfindsame Wesen wahrnimmt, begrenzt sie seine Härte.",
+          "Die Natur stiftet Erfahrungen, fordert Verantwortung und macht Folgen unmittelbar sichtbar. Sie ist deshalb ein pädagogischer Raum, nicht bloss eine schöne Umgebung."
         ]
       },
       {
         "resourceId": "figuren-beziehungen",
-        "title": "Figurenbeziehungen: Großvater, Peter, Heidi",
-        "summary": "Die Beziehungskonstellation zeigt, wie Heidi zwischen dem verschlossenen Großvater und dem eigensinnigen Peter vermittelt.",
-        "task": "Beschreibe, wie Heidi Beziehungen stiftet, ohne sie bewusst zu planen. Arbeite mit je einem Textsignal zu Großvater und Peter.",
+        "title": "Figurenbeziehungen: Grossvater, Peter, Heidi",
+        "summary": "Die Beziehungskonstellation zeigt, wie Heidi zwischen dem verschlossenen Grossvater und dem eigensinnigen Peter vermittelt.",
+        "task": "Beschreibe, wie Heidi Beziehungen stiftet, ohne sie bewusst zu planen. Arbeite mit je einem Textsignal zu Grossvater und Peter.",
         "questionTasks": [
-          "Wie verändert Heidi die Atmosphäre beim Großvater?",
+          "Wie verändert Heidi die Atmosphäre beim Grossvater?",
           "Worin bleibt Peter eigenständig oder widerständig?",
           "Welche Rolle spielt Heidis Direktheit im Umgang mit beiden?"
         ],
         "taskGuide": "Die Antwort sollte Heidi als Beziehungskraft beschreiben: Sie plant keine Erziehung, verändert aber durch Vertrauen, Neugier und Direktheit die sozialen Abstände zwischen den Figuren.",
         "answerGuides": [
-          "Beim Großvater löst Heidi Verschlossenheit, Misstrauen und Härte teilweise auf. Ihre Unbefangenheit ermöglicht Nähe, ohne dass der Großvater sofort grundsätzlich verändert wäre.",
+          "Beim Grossvater löst Heidi Verschlossenheit, Misstrauen und Härte teilweise auf. Ihre Unbefangenheit ermöglicht Nähe, ohne dass der Grossvater sofort grundsätzlich verändert wäre.",
           "Peter bleibt eigenständig, weil er seine Gewohnheiten, Eifersucht und grobe Direktheit behält. Heidi überformt ihn nicht vollständig.",
-          "Heidis Direktheit vermeidet taktisches Verhalten. Gerade weil sie offen fragt, vertraut und widerspricht, geraten Großvater und Peter in Bewegung."
+          "Heidis Direktheit vermeidet taktisches Verhalten. Gerade weil sie offen fragt, vertraut und widerspricht, geraten Grossvater und Peter in Bewegung."
         ]
       }
     ]
   },
   {
     "id": "lektion-03",
-    "title": "Großmutter, Pfarrer und Weggang",
+    "title": "Grossmutter, Pfarrer und Weggang",
     "summary": "Religion, Fürsorge und sozialer Druck treiben den Ortswechsel an.",
     "moduleIds": [
       "modul-03"
@@ -2060,19 +2056,19 @@ export const lessonSets = [
     "resourceAssignments": [
       {
         "resourceId": "religion",
-        "title": "Religion und Fürsorge: Großmutter und Pfarrer",
+        "title": "Religion und Fürsorge: Grossmutter und Pfarrer",
         "summary": "Das Religionsdossier hilft zu unterscheiden, wo der Roman Trost, Pflicht, Schuld und Gottvertrauen miteinander verbindet.",
-        "task": "Untersuche, wie religiöse Sprache im Umfeld der Großmutter wirkt: Tröstet sie, ordnet sie, fordert sie oder setzt sie unter Druck?",
+        "task": "Untersuche, wie religiöse Sprache im Umfeld der Grossmutter wirkt: Tröstet sie, ordnet sie, fordert sie oder setzt sie unter Druck?",
         "questionTasks": [
           "Welche religiösen Wörter oder Motive fallen in der Szene auf?",
-          "Wie reagiert Heidi auf die Großmutter?",
-          "Wo wird Religion zur sozialen Erwartung an den Großvater?"
+          "Wie reagiert Heidi auf die Grossmutter?",
+          "Wo wird Religion zur sozialen Erwartung an den Grossvater?"
         ],
-        "taskGuide": "Die Antwort sollte Religion doppelt lesen: als Trost und als soziale Norm. Bei der Großmutter wirkt sie fürsorglich, beim Großvater wird sie auch zur Forderung nach Rückkehr in die Gemeinschaft.",
+        "taskGuide": "Die Antwort sollte Religion doppelt lesen: als Trost und als soziale Norm. Bei der Grossmutter wirkt sie fürsorglich, beim Grossvater wird sie auch zur Forderung nach Rückkehr in die Gemeinschaft.",
         "answerGuides": [
-          "Auffällig sind Motive wie Gottvertrauen, Gebet, Trost, Sünde, Buße oder kirchliche Gemeinschaft. Sie verbinden private Not mit moralischer Ordnung.",
-          "Heidi reagiert aufmerksam und mitleidig. Sie nimmt die Bedürftigkeit der Großmutter ernst und verbindet Zuhören mit konkreter Fürsorge.",
-          "Beim Großvater erscheint Religion dort als Erwartung, wo Pfarrer, Dorf oder Großmutter seine Rückkehr, Versöhnung oder Verantwortung einfordern."
+          "Als religiöse Wörter oder Motive fallen Gottvertrauen, Gebet, Trost, Sünde, Busse oder kirchliche Gemeinschaft auf. Sie verbinden private Not mit moralischer Ordnung.",
+          "Heidi reagiert aufmerksam und mitleidig. Sie nimmt die Bedürftigkeit der Grossmutter ernst und verbindet Zuhören mit konkreter Fürsorge.",
+          "Beim Grossvater erscheint Religion dort als Erwartung, wo Pfarrer, Dorf oder Grossmutter seine Rückkehr, Versöhnung oder Verantwortung einfordern."
         ]
       },
       {
@@ -2085,10 +2081,10 @@ export const lessonSets = [
           "Wie begründet Dete ihr Handeln?",
           "Welche Textstelle macht sichtbar, dass Heidi selbst kaum gefragt wird?"
         ],
-        "taskGuide": "Eine präzise Antwort zeigt, wie der Roman Zuständigkeit verhandelt: Dete gibt Verantwortung ab, der Großvater soll sie übernehmen, und Heidi bleibt in dieser Ordnung zunächst Objekt der Entscheidung.",
+        "taskGuide": "Eine präzise Antwort zeigt, wie der Roman Zuständigkeit verhandelt: Dete gibt Verantwortung ab, der Grossvater soll sie übernehmen, und Heidi bleibt in dieser Ordnung zunächst Objekt der Entscheidung.",
         "answerGuides": [
-          "Dete gibt die Sorge für Heidi an den Großvater ab; zugleich verweist sie auf dessen Verwandtschaftspflicht. Verantwortung wird als Last weitergereicht.",
-          "Dete begründet ihr Handeln mit der Arbeitsmöglichkeit in Frankfurt und damit, dass der Großvater nun seinen Teil tun müsse. Das klingt praktisch, aber auch abwehrend.",
+          "Die Verantwortung wird von Dete an den Grossvater abgegeben; zugleich verweist Dete auf dessen Verwandtschaftspflicht. Die Sorge um Heidi wird dadurch als Last weitergereicht.",
+          "Dete begründet ihr Handeln mit der Arbeitsmöglichkeit in Frankfurt und damit, dass der Grossvater nun seinen Teil tun müsse. Das klingt praktisch, aber auch abwehrend.",
           "Geeignet sind Formulierungen, in denen Dete sagt, Heidi müsse dort bleiben, oder in denen Erwachsene über sie sprechen, während Heidi selbst kaum zu Wort kommt."
         ]
       }
@@ -2129,7 +2125,7 @@ export const lessonSets = [
         "taskGuide": "Die Antwort sollte Frankfurt als Gegenraum zur Alp beschreiben: Enge, Hausordnung, Aufsicht und soziale Etikette begrenzen Heidis Bewegung und verändern ihre Sprache und ihr Verhalten.",
         "answerGuides": [
           "Besonders fremd wirken Regeln zu Sitzen, Sprechen, Essen, Lernen oder Gehorsam. Entscheidend ist, dass Heidi diese Regeln nicht aus ihrer bisherigen Erfahrung ableiten kann.",
-          "Der Innenraum erscheint geschlossen, kontrolliert und sozial codiert; die Alp ist weit, beweglich und sinnlich erfahrbar. Der Kontrast ist räumlich und pädagogisch.",
+          "Der Innenraum in Frankfurt wird im Vergleich zur Alp als geschlossen, kontrolliert und sozial codiert erfahrbar. Die Alp erscheint dagegen weit, beweglich und sinnlich; der Kontrast ist räumlich und pädagogisch.",
           "Frau Rottenmeiers Ordnung beschämt und diszipliniert Heidi. Sie macht aus Heidis Lebendigkeit ein Problem und verstärkt ihre Fremdheit."
         ]
       },
@@ -2140,13 +2136,13 @@ export const lessonSets = [
         "task": "Vergleiche die Frankfurter Hausordnung mit den gesellschaftlichen Ordnungsfragen aus dem Dossier: Wie zeigt der Roman Macht, Anpassung und Ausschluss, ohne offen politisch zu argumentieren?",
         "questionTasks": [
           "Welche politische oder gesellschaftliche Spannung aus dem Dossier passt als Hintergrund zur Frankfurter Ordnung?",
-          "Wie wird Heidi in Frankfurt zur Außenseiterin eines Regel- und Standessystems?",
+          "Wie wird Heidi in Frankfurt zur Aussenseiterin eines Regel- und Standessystems?",
           "Warum ist es wichtig, Politik hier indirekt und nicht als platte Allegorie zu lesen?"
         ],
         "taskGuide": "Eine gute Antwort verbindet Frankfurts Hausordnung mit dem Dossier zu Zürich, Liberalismus, konservativem Milieu und weiblicher Öffentlichkeit. Sie behauptet nicht, Frankfurt sei einfach Zürich, sondern zeigt, wie der Roman gesellschaftliche Macht in Alltag, Räumen und Benimmregeln übersetzt.",
         "answerGuides": [
           "Passend sind die Spannungen zwischen politischer Macht, gesellschaftlicher Zugehörigkeit, Anpassungsdruck und weiblicher Zurückhaltung. Das Dossier zeigt, dass Spyri solche Konflikte kannte, auch wenn sie nicht offen politisch schrieb.",
-          "Heidi wird zur Außenseiterin, weil sie die Codes von Stand, Bildung, Dienstbotenordnung und städtischem Benehmen nicht beherrscht. Ihre Fremdheit macht das System sichtbar.",
+          "Heidi wird zur Aussenseiterin, weil sie die Codes von Stand, Bildung, Dienstbotenordnung und städtischem Benehmen nicht beherrscht. Ihre Fremdheit macht das System sichtbar.",
           "Politik darf hier nicht als Eins-zu-eins-Schlüssel gelesen werden. Überzeugend ist eine indirekte Deutung: Der Roman verwandelt gesellschaftliche Konflikte in Szenen von Raum, Sprache und Erziehung."
         ]
       },
@@ -2164,7 +2160,7 @@ export const lessonSets = [
         "answerGuides": [
           "Signale sind Müdigkeit, Schlafwandeln, Appetitlosigkeit, Traurigkeit, Unruhe oder körperliche Schwäche. Sie zeigen, dass Heidi sich nicht einfach anpasst.",
           "Heidis Gesundheit hängt an Bewegung, Luft, Natur und vertrauten Beziehungen. Wenn diese fehlen, wird ihr Körper zum Ort der Störung.",
-          "Krankheit verweist auf eine falsche soziale und räumliche Ordnung. Der medizinische Befund führt deshalb zu einer Lebensentscheidung: Heidi muss zurück auf die Alp."
+          "Krankheit ist hier mehr als ein medizinisches Problem, weil sie auf eine falsche soziale und räumliche Ordnung verweist. Der medizinische Befund führt deshalb zu einer Lebensentscheidung: Heidi muss zurück auf die Alp."
         ]
       }
     ]
@@ -2193,7 +2189,7 @@ export const lessonSets = [
       {
         "resourceId": "stadt-land",
         "title": "Stadt und Land: Missverständnisse in Frankfurt",
-        "summary": "Das Stadt-Land-Material hilft, die komischen Szenen als Zusammenstoß verschiedener Lebensordnungen zu lesen.",
+        "summary": "Das Stadt-Land-Material hilft, die komischen Szenen als Zusammenstoss verschiedener Lebensordnungen zu lesen.",
         "task": "Deute eine komische Szene nicht nur als lustigen Zwischenfall, sondern als Hinweis auf unvereinbare Regeln.",
         "questionTasks": [
           "Welche Regel versteht Heidi anders als die Erwachsenen?",
@@ -2203,7 +2199,7 @@ export const lessonSets = [
         "taskGuide": "Die Antwort sollte eine komische Szene als Regelkonflikt deuten. Der Witz entsteht nicht zufällig, sondern aus Heidis wörtlichem, alpinem oder kindlichem Verständnis einer städtischen Ordnung.",
         "answerGuides": [
           "Heidi versteht Anrede, Benehmen, Besitz, Essen oder Dienstbotenregeln anders als die Erwachsenen. Gerade diese Verschiebung erzeugt den Konflikt.",
-          "Komik entsteht, weil Heidi die sozialen Codes des Hauses nicht kennt und Räume oder Gegenstände anders nutzt, als Frankfurt es erwartet.",
+          "Komik entsteht aus räumlicher und sozialer Fremdheit, weil Heidi die Codes des Hauses nicht kennt und Räume oder Gegenstände anders nutzt, als Frankfurt es erwartet.",
           "Frankfurt erscheint als Erziehungsideal der Kontrolle, Höflichkeit und Hierarchie. Die komische Szene macht dieses Ideal zugleich sichtbar und fragwürdig."
         ]
       },
@@ -2221,7 +2217,7 @@ export const lessonSets = [
         "answerGuides": [
           "Anreden wie Fräulein, Herr, Dienerrollen oder formelle Namen markieren Abstand. Auch Korrekturen an Heidis Sprache können soziale Distanz zeigen.",
           "Die Erzählstimme lässt Heidis Missverstehen oft verständlich wirken und entlarvt dadurch eher die Umgebung als das Kind. Der Humor bleibt nicht neutral.",
-          "Komik kippt in Kritik, wenn Heidis Fehler die Starrheit, Kälte oder Unverhältnismäßigkeit der Hausordnung sichtbar machen."
+          "Komik kippt in Kritik, wenn Heidis Fehler die Starrheit, Kälte oder Unverhältnismässigkeit der Hausordnung sichtbar machen."
         ]
       }
     ]
@@ -2251,18 +2247,18 @@ export const lessonSets = [
       {
         "resourceId": "stadt-land",
         "title": "Stadt und Land: Heimweh als Raumkonflikt",
-        "summary": "Das Material zeigt Heimweh als Folge räumlicher Entwurzelung und nicht als bloße Laune.",
+        "summary": "Das Material zeigt Heimweh als Folge räumlicher Entwurzelung und nicht als blosse Laune.",
         "task": "Zeige, wie der Roman Heidis Heimweh über Fenster, Wege, Zimmer und Erinnerungen erzählt.",
         "questionTasks": [
           "Welche Raumdetails machen Heidis Heimweh sichtbar?",
-          "Wie unterscheidet sich Heidis Sehnsucht von bloßer Unzufriedenheit?",
+          "Wie unterscheidet sich Heidis Sehnsucht von blosser Unzufriedenheit?",
           "Welche Textstelle verbindet Frankfurt direkt mit der Alp?"
         ],
         "taskGuide": "Die Antwort sollte Heimweh als Raumkonflikt deuten: Fenster, Zimmer, geschlossene Wege und Erinnerungsbilder zeigen, dass Heidi nicht nur etwas vermisst, sondern aus ihrem Lebensraum herausgelöst ist.",
         "answerGuides": [
           "Fenster, Treppen, Zimmer, geschlossene Türen oder fehlende Aussicht können Heidis Heimweh sichtbar machen. Räume wirken wie Hindernisse.",
           "Heidis Sehnsucht ist tiefer als schlechte Laune: Sie betrifft Körper, Schlaf, Sprache und Lebensvertrauen. Sie verliert einen Teil ihrer selbst.",
-          "Geeignet sind Stellen, in denen Heidi nach Bergen, Himmel, Geißen, Großvater oder dem Dörfli fragt oder Frankfurt mit fehlender Aussicht kontrastiert wird."
+          "Eine Textstelle verbindet Frankfurt direkt mit der Alp, wenn Heidi nach Bergen, Himmel, Geissen, Grossvater oder dem Dörfli fragt oder Frankfurt mit fehlender Aussicht kontrastiert wird."
         ]
       },
       {
@@ -2279,7 +2275,7 @@ export const lessonSets = [
         "answerGuides": [
           "Das Dossier verbindet Heidi mit Vitalität, Übersensibilität und Heimweh als möglichen biografischen Spuren. Diese Spuren können Spyris Wunsch nach Natur, Bewegung und Entlastung spiegeln.",
           "Heimweh erscheint im Schlafwandeln, in Schwäche, Traurigkeit, Blicken aus dem Fenster und körperlicher Unruhe. Der Körper sagt, was Heidi in Frankfurt nicht angemessen aussprechen kann.",
-          "Vorsicht ist nötig, weil keine Stelle beweist, dass Spyri sich selbst direkt erzählt. Die Deutung wird stark, wenn sie am Romantext zeigt, wie Biografie in literarische Form verwandelt wird."
+          "Diese biografische Deutung bleibt trotz starker Hinweise vorsichtig, weil keine Stelle beweist, dass Spyri sich selbst direkt erzählt. Tragfähig wird sie erst, wenn sie am Romantext zeigt, wie Biografie in literarische Form verwandelt wird."
         ]
       },
       {
@@ -2294,9 +2290,9 @@ export const lessonSets = [
         ],
         "taskGuide": "Die Antwort sollte die Spukepisode als verdichtetes Zeichen lesen: Was als Geistererscheinung beginnt, wird zur Diagnose von Heimweh, Überforderung und falscher Umgebung.",
         "answerGuides": [
-          "Beobachtet werden Schlafwandeln, nächtliches Umhergehen, Blässe, Unruhe oder Schwäche. Das scheinbar Unheimliche hat körperliche Zeichen.",
+          "Als Symptome werden Schlafwandeln, nächtliches Umhergehen, Blässe, Unruhe oder Schwäche beobachtet. Das scheinbar Unheimliche hat körperliche Zeichen.",
           "Der Doktor deutet Heidis Zustand als Heimweh und seelische Belastung, nicht als Ungehorsam. Damit verschiebt er die Bewertung der Symptome.",
-          "Die Diagnose zeigt, dass mehr Disziplin das Problem verschärfen würde. Heilung bedeutet Rückkehr in den passenden Lebensraum."
+          "Die Diagnose führt zur Heimkehr statt zu strengerer Erziehung, weil mehr Disziplin Heidis Problem verschärfen würde. Heilung bedeutet Rückkehr in den passenden Lebensraum."
         ]
       }
     ]
@@ -2332,7 +2328,7 @@ export const lessonSets = [
           "Warum wirkt ihre Rede auf den Doktor anders als eine Unterrichtsantwort?",
           "Welche Grenze hat diese Form von Trost?"
         ],
-        "taskGuide": "Eine gute Antwort zeigt, dass Heidi religiöse Sprache in Beziehung übersetzt. Sie wiederholt nicht bloß Gelerntes, sondern spricht aus eigener Erfahrung von Verlust, Hoffnung und Vertrauen.",
+        "taskGuide": "Eine gute Antwort zeigt, dass Heidi religiöse Sprache in Beziehung übersetzt. Sie wiederholt nicht bloss Gelerntes, sondern spricht aus eigener Erfahrung von Verlust, Hoffnung und Vertrauen.",
         "answerGuides": [
           "Heidi gibt die Vorstellung weiter, dass Vertrauen, Gebet oder göttliche Führung auch in Trauer tragen können. Entscheidend ist der Bezug zur konkreten Not des Doktors.",
           "Ihre Rede wirkt anders, weil sie nicht prüfungsartig spricht, sondern persönlich Anteil nimmt. Der Doktor hört eine Beziehungsgeste, keine Lektion.",
@@ -2353,7 +2349,7 @@ export const lessonSets = [
         "answerGuides": [
           "Sichtbar werden Müdigkeit, Rückzug, Niedergeschlagenheit, körperliche Schwäche oder fehlende Lebensfreude. Trauer erscheint nicht nur innerlich.",
           "Heidi reagiert mit Nähe, Aufmerksamkeit und Sprache. Sie sieht den Doktor nicht als Autorität, sondern als trauernden Menschen.",
-          "Die Alp wirkt als Heilraum, weil sie Bewegung, Luft, Beziehung und Einfachheit verbindet. Sie ersetzt Medizin nicht vollständig, erweitert aber den Heilungsbegriff."
+          "Die Alp spielt als möglicher Heilraum eine Rolle, weil sie Bewegung, Luft, Beziehung und Einfachheit verbindet. Sie ersetzt Medizin nicht vollständig, erweitert aber den Heilungsbegriff."
         ]
       }
     ]
@@ -2386,13 +2382,13 @@ export const lessonSets = [
         "task": "Erkläre, wie Lesenlernen, Naturerfahrung und soziale Verantwortung in dieser Lektion zusammenkommen.",
         "questionTasks": [
           "Was kann Schule leisten, was die Alp nicht leistet?",
-          "Was lernt Heidi außerhalb der Schule weiterhin besser?",
+          "Was lernt Heidi ausserhalb der Schule weiterhin besser?",
           "Wie verändert Bildung die Beziehungen zwischen Heidi, Peter und Klara?"
         ],
         "taskGuide": "Die Antwort sollte Schule und Alp nicht gegeneinander ausspielen. Lesenlernen erweitert Heidis Handlungsmöglichkeiten; Erfahrungslernen bleibt aber für Beziehung, Naturwahrnehmung und Verantwortung zentral.",
         "answerGuides": [
-          "Schule vermittelt Lesen, Schrift, religiöse Texte und Zugang zu fremden Lebenswelten. Sie gibt Heidi Ausdrucksmöglichkeiten, die Natur allein nicht bietet.",
-          "Außerhalb der Schule lernt Heidi weiterhin Beziehung, Fürsorge, Tierverhalten, Gelände und situatives Handeln besser. Dieses Wissen ist körperlich und praktisch.",
+          "Schule kann Lesen, Schrift, religiöse Texte und Zugang zu fremden Lebenswelten leisten; das leistet die Alp nicht in gleicher Weise. Sie gibt Heidi Ausdrucksmöglichkeiten, die Natur allein nicht bietet.",
+          "Ausserhalb der Schule lernt Heidi weiterhin Beziehung, Fürsorge, Tierverhalten, Gelände und situatives Handeln besser. Dieses Wissen ist körperlich und praktisch.",
           "Bildung verändert Beziehungen, weil Heidi lesen, trösten, vermitteln und Klara oder Peter anders begegnen kann. Zugleich entstehen neue Ungleichheiten und Eifersucht."
         ]
       },
@@ -2400,7 +2396,7 @@ export const lessonSets = [
         "resourceId": "figuren-beziehungen",
         "title": "Figurenbeziehungen: Freundschaft, Eifersucht, Besuch",
         "summary": "Die Figurenkonstellation zeigt, wie Klaras Reise Peters Stellung bedroht und Heidis Beziehungen erweitert.",
-        "task": "Untersuche Peters Eifersucht nicht als bloße Bosheit, sondern als Reaktion auf veränderte Näheverhältnisse.",
+        "task": "Untersuche Peters Eifersucht nicht als blosse Bosheit, sondern als Reaktion auf veränderte Näheverhältnisse.",
         "questionTasks": [
           "Wodurch fühlt Peter sich zurückgesetzt?",
           "Wie verhält sich Heidi zwischen Peter und Klara?",
@@ -2447,10 +2443,10 @@ export const lessonSets = [
           "Wie verändert die Alp Klaras Bewegungsmöglichkeiten?",
           "Wo bleibt die Darstellung problematisch oder idealisierend?"
         ],
-        "taskGuide": "Die Antwort sollte Klaras Veränderung nicht als bloßes Wunder lesen. Der Roman baut Bedingungen auf: Pflege, Übung, Ermutigung, Naturraum und soziale Zuwendung.",
+        "taskGuide": "Die Antwort sollte Klaras Veränderung nicht als blosses Wunder lesen. Der Roman baut Bedingungen auf: Pflege, Übung, Ermutigung, Naturraum und soziale Zuwendung.",
         "answerGuides": [
           "Konkret gezeigt werden Tragen, Stützen, Üben, sorgfältige Ernährung, Ruhe, Begleitung und Ermutigung. Pflege ist im Roman praktisch und beziehungsnah.",
-          "Die Alp eröffnet Klara neue Bewegungsreize: Wege, Luft, Tiere, Höhen und gemeinsames Tun. Bewegung wird weniger häuslich kontrolliert als in Frankfurt.",
+          "Die Alp verändert Klaras Bewegungsmöglichkeiten durch Wege, Luft, Tiere, Höhen und gemeinsames Tun. Bewegung wird weniger häuslich kontrolliert als in Frankfurt.",
           "Problematisch bleibt, dass Behinderung stark auf Heilung und Überwindung hin erzählt wird. Die Darstellung kann idealisieren, weil soziale und medizinische Komplexität verkürzt wird."
         ]
       },
@@ -2509,8 +2505,8 @@ export const lessonSets = [
         ],
         "taskGuide": "Die Antwort sollte Peters Schuld weder verharmlosen noch dämonisieren. Seine Tat entsteht aus Eifersucht und sozialer Kränkung; der Schluss ordnet sie durch Geständnis, Vergebung und materielle Entlastung ein.",
         "answerGuides": [
-          "Motive sind Eifersucht, Angst vor Bedeutungsverlust, soziale Unterlegenheit und Wut auf Klaras Rollstuhl als Zeichen der Konkurrenz.",
-          "Das Geständnis macht die verborgene Schuld öffentlich und ermöglicht eine neue Ordnung. Peter wird nicht nur Täter, sondern wieder Teil der Gemeinschaft.",
+          "Zu Peters Tat führen Motive wie Eifersucht, Angst vor Bedeutungsverlust, soziale Unterlegenheit und Wut auf Klaras Rollstuhl als Zeichen der Konkurrenz.",
+          "Das Geständnis verändert die Situation, weil es die verborgene Schuld öffentlich macht und eine neue Ordnung ermöglicht. Peter wird nicht nur Täter, sondern wieder Teil der Gemeinschaft.",
           "Wiedergutmachung entsteht durch Vergebung, Einsicht und die finanzielle Regelung. Der Schluss entschärft Schuld sozial, statt sie nur strafend zu behandeln."
         ]
       },
@@ -2527,7 +2523,7 @@ export const lessonSets = [
         "taskGuide": "Eine gute Antwort vergleicht Roman und Bildtradition genau: Heidi wird als Naturkind, Schweizer Ikone und Heilsfigur wiedererkennbar, während Ambivalenzen des Romans oft geglättet werden.",
         "answerGuides": [
           "Popularisierbar sind Heidis Kindlichkeit, Naturverbundenheit, Fröhlichkeit, Schweizer Alpenkulisse und klare Wiedererkennbarkeit.",
-          "Oft verschwinden Armut, Weggabe, Krankheit, religiöser Druck, Peters Schuld und soziale Abhängigkeiten. Übrig bleibt eine harmlose Idylle.",
+          "In idealisierten Bildern verschwinden oft Konflikte wie Armut, Weggabe, Krankheit, religiöser Druck, Peters Schuld und soziale Abhängigkeiten. Übrig bleibt eine harmlose Idylle.",
           "Popularisierung kann Schuld und Schluss versöhnlicher wirken lassen, als sie im Roman angelegt sind. Konflikte werden zu einem beruhigenden Heidi-Bild geglättet."
         ]
       },
@@ -2543,7 +2539,7 @@ export const lessonSets = [
         ],
         "taskGuide": "Eine überzeugende Antwort bündelt die Einheit: Heidi ist nicht einfach Spyri, aber die Figur trägt Spuren von weiblicher Biografie, gesellschaftlicher Ordnung und kultureller Sehnsucht. Im Nachleben wird diese Figur immer wieder vereinfacht, erweitert oder umcodiert.",
         "answerGuides": [
-          "Offen bleibt, wie viel Johanna in Heidi steckt. Gerade diese Unentscheidbarkeit macht die Figur stark: Sie ist biografisch anschließbar, aber literarisch eigenständig.",
+          "Offen bleibt, wie viel Johanna in Heidi steckt. Gerade diese Unentscheidbarkeit macht die Figur stark: Sie ist biografisch anschliessbar, aber literarisch eigenständig.",
           "Neu sichtbar werden Fragen von weiblichem Handlungsspielraum, politischer Zugehörigkeit, sozialer Ordnung und öffentlichem Sprechen. Der Schluss kann deshalb als Beruhigung und als kulturelle Formung gelesen werden.",
           "Das Dossier zeigt Übersetzungen, Filme und Lesarten als Umformungen. Heidi bleibt anschlussfähig, weil sie klare Bilder bietet, aber zugleich offene Konflikte in Natur, Heimat, Kindheit und Gesellschaft bündelt."
         ]
@@ -2552,7 +2548,7 @@ export const lessonSets = [
         "resourceId": "studienkompass",
         "title": "Studienkompass: Forschungsperspektiven bündeln",
         "summary": "Der Studienkompass hilft, einzelne Beobachtungen am Ende der Einheit in eine begründete Gesamtdeutung zu überführen.",
-        "task": "Formuliere eine abschließende These: Welche Spannung trägt den Roman am stärksten – Natur und Stadt, Religion und Fürsorge, Krankheit und Heilung oder Schuld und Ordnung?",
+        "task": "Formuliere eine abschliessende These: Welche Spannung trägt den Roman am stärksten – Natur und Stadt, Religion und Fürsorge, Krankheit und Heilung oder Schuld und Ordnung?",
         "questionTasks": [
           "Welche Forschungs- oder Dossierperspektive war für deine Deutung am ergiebigsten?",
           "Welche Romanstelle stützt deine Gesamtthese am stärksten?",
@@ -2560,8 +2556,8 @@ export const lessonSets = [
         ],
         "taskGuide": "Die Antwort sollte eine echte Gesamtthese formulieren und nicht nur Themen aufzählen. Entscheidend ist, eine Spannung des Romans zu wählen und mit einer starken Textstelle sowie einer Materialperspektive zu begründen.",
         "answerGuides": [
-          "Ergiebig ist die Perspektive, die die eigene These am besten schärft, etwa Naturpädagogik, Körper und Gesundheit, Religion, Stadt-Land-Kontrast oder Popularisierung.",
-          "Die stärkste Romanstelle sollte nicht nur passen, sondern die Spannung bündeln: etwa Heidis Weggabe, der Frankfurter Spuk, Klaras Alpaufenthalt oder Peters Geständnis.",
+          "Als ergiebigste Forschungs- oder Dossierperspektive gilt diejenige, die die eigene Deutung am besten schärft, etwa Naturpädagogik, Körper und Gesundheit, Religion, Stadt-Land-Kontrast oder Popularisierung.",
+          "Die Romanstelle, die die Gesamtthese am stärksten stützt, sollte nicht nur passen, sondern die Spannung bündeln: etwa Heidis Weggabe, der Frankfurter Spuk, Klaras Alpaufenthalt oder Peters Geständnis.",
           "Zurückweisen lässt sich die Vereinfachung, Heidi sei nur eine harmlose Idylle. Der Roman verhandelt auch Armut, Kontrolle, Krankheit, Schuld und soziale Ordnung."
         ]
       },
@@ -2578,7 +2574,7 @@ export const lessonSets = [
         "taskGuide": "Eine genaue Antwort beschreibt den Trailer als produktive Störung: Er nutzt vertraute Heidi-Signale und verschiebt sie durch Horrorästhetik, Musik, Schnitt oder KI-Bildlogik in ein fremdes Genre.",
         "answerGuides": [
           "Der Trailer nutzt die Erwartung von Unschuld, Alp-Idylle, Kindheit, Natur und Heimat. Gerade weil diese Erwartungen vertraut sind, kann er sie ins Unheimliche kippen.",
-          "Stark wirken etwa düstere Musik, harte Schnitte, verzerrte Gesichter, Schatten, Tempo oder KI-Glätte. Die Romanwirkung verschiebt sich von Trost zu Bedrohung.",
+          "Als Bild- oder Tonentscheidung verändert etwa düstere Musik, harte Schnitte, verzerrte Gesichter, Schatten, Tempo oder KI-Glätte die Romanwirkung am stärksten. Die Wirkung verschiebt sich von Trost zu Bedrohung.",
           "Man lernt, dass Popularisierung Figuren aus ihrem Ursprung lösen kann. Verfremdung macht sichtbar, welche Bildformeln Heidi stabilisieren und wie leicht sie umcodiert werden."
         ]
       }

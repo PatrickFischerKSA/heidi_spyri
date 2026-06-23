@@ -17,7 +17,7 @@ const analyticalSignals = [
   "schärft"
 ];
 
-const summarySignals = ["dann", "danach", "anschließend", "später", "erzählt", "passiert"];
+const summarySignals = ["dann", "danach", "anschliessend", "später", "erzählt", "passiert"];
 const precisionSignals = [
   "wort",
   "formulierung",
@@ -136,7 +136,7 @@ export function evaluateReaderSebFeedback({ lessonId, moduleId, entryId, theoryI
   const contextualFitScore = Math.min(1, (
     ratio(expectedHits, Math.max(expectedTerms.length, 1)) * 0.6 +
     (hasSignal(combined, tokenize(module.lens)) ? 0.2 : 0) +
-    (hasSignal(combined, ["elli", "link", "grete", "bende", "arsen", "arsenik", "brief", "briefe", "prozeß", "prozess", "gericht", "milieu", "symbiose", "obduktion", "mageninhalt", "haarprobe", "toxikologie", "methylalkohol"]) ? 0.2 : 0)
+    (hasSignal(combined, ["elli", "link", "grete", "bende", "arsen", "arsenik", "brief", "briefe", "prozess", "prozess", "gericht", "milieu", "symbiose", "obduktion", "mageninhalt", "haarprobe", "toxikologie", "methylalkohol"]) ? 0.2 : 0)
   ));
 
   const revisionScore = Math.min(1, (
@@ -180,7 +180,7 @@ export function evaluateReaderSebFeedback({ lessonId, moduleId, entryId, theoryI
   if (contextualFitScore >= 0.62) {
     strengths.push("Die Antwort ordnet die Passage bereits gut in Figurenkonstellation, Motivik oder Konfliktlinien des Romans ein.");
   } else {
-    cautions.push("Der größere Roman-Zusammenhang bleibt noch zu blass. Figuren, Motive oder Konfliktachsen könnten klarer benannt werden.");
+    cautions.push("Der grössere Roman-Zusammenhang bleibt noch zu blass. Figuren, Motive oder Konfliktachsen könnten klarer benannt werden.");
     nextMoves.push(`Binde deine Beobachtung stärker an die Modullinse zurück: ${(module.lens || module.title || "die aktuelle Lektion").toLowerCase()}.`);
   }
 

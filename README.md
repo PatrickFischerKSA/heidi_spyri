@@ -42,7 +42,7 @@ npm test
 npm start
 ```
 
-Standardmäßig läuft die App unter <http://127.0.0.1:3018>.
+Standardmässig läuft die App unter <http://127.0.0.1:3018>.
 
 ## Zugänge
 
@@ -50,6 +50,6 @@ Standardmäßig läuft die App unter <http://127.0.0.1:3018>.
 - `/teacher-entry` Lehrendenüberblick
 - `/teacher` Dashboard
 
-Die große Open-Access-Studie wurde nicht als 523-MB-Originaldatei eingebettet, sondern als Studienkompass und Dossiers didaktisiert.
+Die grosse Open-Access-Studie wurde nicht als 523-MB-Originaldatei eingebettet, sondern als Studienkompass und Dossiers didaktisiert.
 
 Deployment-Schritte stehen in [docs/deployment.md](docs/deployment.md).

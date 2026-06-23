@@ -364,6 +364,91 @@ textarea {
   gap: 12px;
 }
 
+.teacher-material-list {
+  display: grid;
+  gap: 8px;
+}
+
+.material-pill {
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px;
+  border: 1px solid rgba(49, 67, 53, 0.13);
+  border-radius: 16px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.14);
+  text-decoration: none;
+}
+
+.material-pill:hover,
+.material-pill:focus-visible {
+  border-color: rgba(180, 92, 57, 0.42);
+  background: rgba(180, 92, 57, 0.08);
+}
+
+.material-pill small {
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.student-work-section {
+  display: grid;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(49, 67, 53, 0.12);
+}
+
+.student-work-section h4,
+.lesson-answer-body h4,
+.answer-body h4 {
+  margin: 0;
+}
+
+.lesson-answer-detail,
+.answer-detail {
+  border: 1px solid rgba(49, 67, 53, 0.13);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.lesson-answer-detail > summary,
+.answer-detail > summary {
+  cursor: pointer;
+  padding: 11px 13px;
+  font-weight: 700;
+}
+
+.lesson-answer-detail[open] > summary,
+.answer-detail[open] > summary {
+  border-bottom: 1px solid rgba(49, 67, 53, 0.1);
+  background: rgba(49, 67, 53, 0.04);
+}
+
+.lesson-answer-body,
+.answer-body {
+  display: grid;
+  gap: 12px;
+  padding: 13px;
+}
+
+.answer-body p {
+  margin: 0;
+}
+
+.answer-block {
+  display: grid;
+  gap: 7px;
+  padding: 11px;
+  border-radius: 14px;
+  background: rgba(49, 67, 53, 0.04);
+}
+
+.answer-block small {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
 .empty {
   padding: 16px;
   border-radius: 20px;

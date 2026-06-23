@@ -734,7 +734,7 @@ function renderTeacherEntryPage({ lessonId, entryId } = {}) {
               <h2>${currentEntry.title}</h2>
               <p><strong>${currentEntry.pageHint}</strong> · ${currentEntry.passageLabel}</p>
               <p>${currentEntry.context}</p>
-              <div class="notice">Im Lehrer*inneneingang erscheint nur der knappe Aufgabenüberblick. Die interaktiven Textfelder mit Sofortfeedback liegen ausschließlich im Reader.</div>
+              <div class="notice">Im Lehrer*inneneingang erscheint nur der knappe Aufgabenüberblick. Die interaktiven Textfelder mit Sofortfeedback liegen ausschliesslich im Reader.</div>
               <div class="row">
                 <a class="button secondary" href="/open/lesson/${currentLesson.id}" target="_blank" rel="noreferrer">Diese Lektion im Reader öffnen</a>
                 <a class="button secondary" href="/seb/lesson/${currentLesson.id}" target="_blank" rel="noreferrer">SEB-Ansicht öffnen</a>

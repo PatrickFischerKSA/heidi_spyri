@@ -70,4 +70,4 @@ Auch Supabase Free ist keine perfekte Archivlösung:
 - Projekte können bei Inaktivität pausiert werden.
 - Free-Projekte haben keine herunterladbaren Backups.
 
-Für Unterrichtssequenzen ist das deutlich besser als ein flüchtiges Dateisystem. Für dauerhaftes Archivieren wäre später ein bezahlter Storage-Plan oder regelmäßiger Export sinnvoll.
+Für Unterrichtssequenzen ist das deutlich besser als ein flüchtiges Dateisystem. Für dauerhaftes Archivieren wäre später ein bezahlter Storage-Plan oder regelmässiger Export sinnvoll.

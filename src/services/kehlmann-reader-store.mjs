@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { lessonSets, theoryResources } from "../../public/kehlmann-reader/data.js";
 import { getEntriesForLesson, getLessonSetsWithCounts, summarizeStudentWork } from "./kehlmann-reader-progress.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -27,7 +28,7 @@ const defaultPeerReviewCriteria = [
   {
     id: "deutungsplausibilitaet",
     label: "Deutungsplausibilität",
-    prompt: "Ist die Interpretation nachvollziehbar und über bloße Inhaltsangabe hinausgeführt?"
+    prompt: "Ist die Interpretation nachvollziehbar und über blosse Inhaltsangabe hinausgeführt?"
   },
   {
     id: "sprachliche_klarheit",
@@ -394,6 +395,136 @@ function buildLessonPortfolio(work, lessonId) {
   };
 }
 
+function resourceResponseKey(lessonId, resourceId) {
+  return `lesson-resource::${lessonId}::${resourceId}`;
+}
+
+function hasText(value) {
+  return Boolean(String(value || "").trim());
+}
+
+function materialForAssignment(assignment) {
+  return theoryResources.find((resource) => resource.id === assignment.resourceId) || null;
+}
+
+function buildMaterialOverview() {
+  return theoryResources.map((resource) => ({
+    id: resource.id,
+    title: resource.title,
+    shortTitle: resource.shortTitle,
+    sourceTitle: resource.sourceTitle,
+    summary: resource.summary,
+    mediaType: resource.mediaType,
+    openUrl: resource.openUrl,
+    embedUrl: resource.embedUrl,
+    externalLinks: resource.externalLinks || []
+  }));
+}
+
+function buildLessonMaterials(lesson) {
+  return (lesson.resourceAssignments || []).map((assignment) => {
+    const resource = materialForAssignment(assignment);
+    return {
+      resourceId: assignment.resourceId,
+      title: assignment.title,
+      summary: assignment.summary,
+      task: assignment.task,
+      questionTasks: assignment.questionTasks || [],
+      taskGuide: assignment.taskGuide || "",
+      answerGuides: assignment.answerGuides || [],
+      sourceTitle: resource?.sourceTitle || "",
+      openUrl: resource?.openUrl || "",
+      mediaType: resource?.mediaType || "",
+      externalLinks: resource?.externalLinks || []
+    };
+  });
+}
+
+function buildStudentEntryResponses(work, lesson) {
+  const notes = work?.notes || {};
+  return getEntriesForLesson(lesson.id).map((entry) => {
+    const note = notes[entry.id] || {};
+    const focusTasks = entry.focusTasks || [];
+    const theoryResponses = Object.entries(note.theoryResponses || {}).map(([theoryId, stored]) => {
+      const theory = theoryResources.find((resource) => resource.id === theoryId);
+      return {
+        theoryId,
+        title: theory?.title || theoryId,
+        guidingAnswers: stored.guidingAnswers || [],
+        transferAnswers: stored.transferAnswers || []
+      };
+    });
+
+    return {
+      id: entry.id,
+      title: entry.title,
+      passageLabel: entry.passageLabel,
+      pageHint: entry.pageHint,
+      prompts: entry.prompts || [],
+      focusAnswers: focusTasks.map((task, index) => ({
+        prompt: task.prompt || String(task || ""),
+        answer: note.focusAnswers?.[index] || ""
+      })),
+      answers: {
+        observation: note.observation || "",
+        evidence: note.evidence || "",
+        interpretation: note.interpretation || "",
+        theory: note.theory || "",
+        revision: note.revision || ""
+      },
+      theoryResponses,
+      hasContent: [
+        note.observation,
+        note.evidence,
+        note.interpretation,
+        note.theory,
+        note.revision,
+        ...(note.focusAnswers || []),
+        ...theoryResponses.flatMap((section) => [
+          ...(section.guidingAnswers || []),
+          ...(section.transferAnswers || [])
+        ])
+      ].some(hasText)
+    };
+  });
+}
+
+function buildStudentMaterialResponses(work, lesson) {
+  const notes = work?.notes || {};
+  return (lesson.resourceAssignments || []).map((assignment) => {
+    const resource = materialForAssignment(assignment);
+    const stored = notes[resourceResponseKey(lesson.id, assignment.resourceId)] || {};
+    const questionTasks = assignment.questionTasks || [];
+    return {
+      resourceId: assignment.resourceId,
+      title: assignment.title,
+      sourceTitle: resource?.sourceTitle || "",
+      openUrl: resource?.openUrl || "",
+      task: assignment.task,
+      taskResponse: stored.taskResponse || "",
+      questions: questionTasks.map((prompt, index) => ({
+        prompt: prompt.prompt || String(prompt || ""),
+        answer: stored.questionAnswers?.[index] || "",
+        expected: assignment.answerGuides?.[index] || ""
+      })),
+      hasContent: [
+        stored.taskResponse,
+        ...(stored.questionAnswers || [])
+      ].some(hasText)
+    };
+  });
+}
+
+function buildStudentWorkDetail(work) {
+  return lessonSets.map((lesson) => ({
+    id: lesson.id,
+    title: lesson.title,
+    summary: lesson.summary,
+    entries: buildStudentEntryResponses(work, lesson),
+    materials: buildStudentMaterialResponses(work, lesson)
+  }));
+}
+
 function assignmentPairsForClass(store, classroom) {
   if (!classroom.peerReviewEnabled) {
     return [];
@@ -676,15 +807,21 @@ export function buildTeacherOverview(store) {
   const lessons = getLessonSetsWithCounts();
 
   return {
-    lessons,
+    materials: buildMaterialOverview(),
+    lessons: lessons.map((lesson) => ({
+      ...lesson,
+      materials: buildLessonMaterials(lesson)
+    })),
     reviewCriteria: structuredClone(defaultPeerReviewCriteria),
     classes: store.classes.map((classroom) => {
       const students = store.students
         .filter((student) => student.classId === classroom.id)
         .map((student) => {
-          const summary = summarizeStudentWork(student, classroom, getStudentWork(store, student.id));
+          const work = getStudentWork(store, student.id);
+          const summary = summarizeStudentWork(student, classroom, work);
           return {
             ...summary,
+            workDetail: buildStudentWorkDetail(work),
             peerReview: reviewStatsForStudent(store, classroom, student.id)
           };
         })

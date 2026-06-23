@@ -35,7 +35,7 @@ test("SEB feedback flags vague summary without enough motif or text anchoring", 
     note: {
       observation: "Die Stelle ist traurig und wichtig.",
       evidence: "",
-      interpretation: "Dann ist alles schlimm und man merkt, dass es ein großes Problem gibt.",
+      interpretation: "Dann ist alles schlimm und man merkt, dass es ein grosses Problem gibt.",
       theory: "Es geht um den Prozess.",
       revision: ""
     }

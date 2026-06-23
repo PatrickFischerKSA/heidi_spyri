@@ -51,15 +51,136 @@ function averageProgress() {
 }
 
 function renderLessonLinks() {
+  const teacherEntryUrl = escapeHtml(config.teacherEntryUrl || "/teacher-entry");
   return state.overview.lessons.map((lesson) => `
     <article class="lesson-link-card">
       <h3>${escapeHtml(lesson.title)}</h3>
       <p>${escapeHtml(lesson.summary)}</p>
+      ${lesson.materials?.length ? `
+        <div class="teacher-material-list">
+          ${lesson.materials.map((material) => `
+            <a class="material-pill" href="${escapeHtml(material.openUrl)}" target="_blank" rel="noreferrer">
+              <span>${escapeHtml(material.title)}</span>
+              <small>${escapeHtml(material.sourceTitle || "Material")}</small>
+            </a>
+          `).join("")}
+        </div>
+      ` : ""}
       <div class="lesson-actions">
-        <a class="button secondary" href="/open/lesson/${lesson.id}" target="_blank" rel="noreferrer">Öffnen</a>
+        <a class="button secondary" href="/open/lesson/${escapeHtml(lesson.id)}" target="_blank" rel="noreferrer">Reader öffnen</a>
+        <a class="button secondary" href="${teacherEntryUrl}?lesson=${encodeURIComponent(lesson.id)}" target="_blank" rel="noreferrer">Materialansicht</a>
       </div>
     </article>
   `).join("");
+}
+
+function answerLine(label, value) {
+  return hasContent(value)
+    ? `<p><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</p>`
+    : "";
+}
+
+function hasContent(value) {
+  return Boolean(String(value || "").trim());
+}
+
+function renderStudentEntryAnswers(entry) {
+  const focusAnswers = (entry.focusAnswers || []).filter((item) => hasContent(item.answer));
+  const theoryResponses = (entry.theoryResponses || []).filter((section) => (
+    [...(section.guidingAnswers || []), ...(section.transferAnswers || [])].some(hasContent)
+  ));
+
+  if (!entry.hasContent && !focusAnswers.length && !theoryResponses.length) {
+    return "";
+  }
+
+  return `
+    <details class="answer-detail">
+      <summary>${escapeHtml(`${entry.passageLabel || entry.title}: ${entry.title}`)}</summary>
+      <div class="answer-body">
+        ${answerLine("Beobachtung", entry.answers?.observation)}
+        ${answerLine("Textanker", entry.answers?.evidence)}
+        ${answerLine("Deutung", entry.answers?.interpretation)}
+        ${answerLine("Theoriebezug", entry.answers?.theory)}
+        ${answerLine("Revision", entry.answers?.revision)}
+        ${focusAnswers.length ? `
+          <h4>Fokusantworten</h4>
+          ${focusAnswers.map((item) => `
+            <div class="answer-block">
+              <strong>${escapeHtml(item.prompt)}</strong>
+              <p>${escapeHtml(item.answer)}</p>
+            </div>
+          `).join("")}
+        ` : ""}
+        ${theoryResponses.length ? `
+          <h4>Theorie- und Transferantworten</h4>
+          ${theoryResponses.map((section) => `
+            <div class="answer-block">
+              <strong>${escapeHtml(section.title)}</strong>
+              ${[...(section.guidingAnswers || []), ...(section.transferAnswers || [])]
+                .filter(hasContent)
+                .map((answer) => `<p>${escapeHtml(answer)}</p>`)
+                .join("")}
+            </div>
+          `).join("")}
+        ` : ""}
+      </div>
+    </details>
+  `;
+}
+
+function renderStudentMaterialAnswers(material) {
+  const answeredQuestions = (material.questions || []).filter((item) => hasContent(item.answer));
+  if (!material.hasContent && !answeredQuestions.length) {
+    return "";
+  }
+
+  return `
+    <details class="answer-detail material-answer-detail">
+      <summary>${escapeHtml(material.title)}</summary>
+      <div class="answer-body">
+        <div class="row">
+          ${material.openUrl ? `<a class="button secondary" href="${escapeHtml(material.openUrl)}" target="_blank" rel="noreferrer">Material öffnen</a>` : ""}
+        </div>
+        ${answerLine("Arbeitsauftrag", material.taskResponse)}
+        ${answeredQuestions.length ? `
+          <h4>Materialfragen</h4>
+          ${answeredQuestions.map((item) => `
+            <div class="answer-block">
+              <strong>${escapeHtml(item.prompt)}</strong>
+              <p>${escapeHtml(item.answer)}</p>
+              ${item.expected ? `<small>${escapeHtml(`Erwartungshorizont: ${item.expected}`)}</small>` : ""}
+            </div>
+          `).join("")}
+        ` : ""}
+      </div>
+    </details>
+  `;
+}
+
+function renderStudentWork(student) {
+  const lessonBlocks = (student.workDetail || [])
+    .map((lesson) => {
+      const entryMarkup = (lesson.entries || []).map(renderStudentEntryAnswers).filter(Boolean).join("");
+      const materialMarkup = (lesson.materials || []).map(renderStudentMaterialAnswers).filter(Boolean).join("");
+      if (!entryMarkup && !materialMarkup) {
+        return "";
+      }
+
+      return `
+        <details class="lesson-answer-detail">
+          <summary>${escapeHtml(lesson.title)}</summary>
+          <div class="lesson-answer-body">
+            ${materialMarkup ? `<h4>Materialantworten</h4>${materialMarkup}` : ""}
+            ${entryMarkup ? `<h4>Passagenantworten</h4>${entryMarkup}` : ""}
+          </div>
+        </details>
+      `;
+    })
+    .filter(Boolean)
+    .join("");
+
+  return lessonBlocks || '<div class="empty">Noch keine gespeicherten Antworten.</div>';
 }
 
 function renderStudents() {
@@ -95,6 +216,10 @@ function renderStudents() {
           </div>
         `).join("")}
       </div>
+      <div class="student-work-section">
+        <h4>Antworten und Materialien</h4>
+        ${renderStudentWork(student)}
+      </div>
     </article>
   `).join("");
 }
@@ -119,7 +244,7 @@ function renderGuide() {
         </div>
         <div class="instruction-card">
           <strong>3. Beobachten</strong>
-          <p>Dieses Dashboard zeigt Fortschritt, Textanker, Theoriebezüge und Peer-Review-Stand.</p>
+          <p>Dieses Dashboard zeigt Fortschritt, Materialien und gespeicherte Antworten der Lernenden.</p>
         </div>
       </div>
     </article>
@@ -179,7 +304,7 @@ function render() {
         <div class="panel-head">
           <div>
             <div class="eyebrow">Lektionsübersicht</div>
-            <h2>Alle Lektionen</h2>
+            <h2>Alle Lektionen und Materialien</h2>
           </div>
         </div>
         <div class="lesson-link-grid">

@@ -42,13 +42,13 @@ let sebFeedbackRequestId = 0;
 const entryIndex = new Map();
 const semanticGroups = {
   heidi: ["heidi", "kind", "mädchen", "maedchen", "waise"],
-  almoehi: ["almöhi", "almoehi", "großvater", "grossvater", "öhi", "oehi"],
-  peter: ["geissenpeter", "geißenpeter", "peter", "ziegen", "geissen", "weide"],
+  almoehi: ["almöhi", "almoehi", "grossvater", "grossvater", "öhi", "oehi"],
+  peter: ["geissenpeter", "geissenpeter", "peter", "ziegen", "geissen", "weide"],
   klara: ["klara", "rollstuhl", "sesemann", "frankfurt", "freundin"],
   dete: ["dete", "tante", "dienst", "familie", "tobias"],
   natur: ["alp", "alm", "berge", "natur", "luft", "sonne", "weide", "dörfli", "doerfli"],
   stadt: ["stadt", "frankfurt", "fenster", "hausordnung", "benimmregel", "rottenmeier", "tinette", "sebastian"],
-  religion: ["gott", "gebet", "pfarrer", "grossmama", "großmama", "grossmutter", "vertrauen", "zweifel"],
+  religion: ["gott", "gebet", "pfarrer", "grossmama", "grossmama", "grossmutter", "vertrauen", "zweifel"],
   koerper: ["körper", "koerper", "krank", "gesund", "heimweh", "schlaf", "essen", "laufen", "medizin", "doktor"],
   sprache: ["wort", "formulierung", "begriff", "satz", "bild", "dialog", "ton", "erzählen", "erzaehlen"],
   ambivalenz: ["zugleich", "gleichzeitig", "widerspruch", "ambivalenz", "offen", "unsicher"]
@@ -872,7 +872,7 @@ function feedbackFor(note, module, entry) {
   const evidence = note.evidence;
   const theory = note.theory;
   const signals = ["zeigt", "verdeutlicht", "deutet", "wirkt", "weil", "macht sichtbar", "inszeniert"];
-  const summarySignals = ["dann", "danach", "passiert", "anschließend", "erzählt"];
+  const summarySignals = ["dann", "danach", "passiert", "anschliessend", "erzählt"];
   const contextualSignals = [
     "tilda",
     "ida",
@@ -900,7 +900,7 @@ function feedbackFor(note, module, entry) {
   const combined = `${body} ${evidence}`;
 
   if (evidence.trim().length >= 8) {
-    positives.push("Du arbeitest bereits mit konkreten Wortsignalen aus dem Text und löst dich damit von bloßer Nacherzählung.");
+    positives.push("Du arbeitest bereits mit konkreten Wortsignalen aus dem Text und löst dich damit von blosser Nacherzählung.");
   } else {
     steps.push("Ergänze ein oder zwei Wörter aus dem Volltext-Wortlaut als präzisen Textanker.");
   }
