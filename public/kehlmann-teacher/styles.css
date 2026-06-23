@@ -191,6 +191,12 @@ button {
   color: var(--forest);
 }
 
+.button.audiobook {
+  background: var(--accent);
+  color: #fffaf0;
+  box-shadow: 0 12px 30px rgba(180, 92, 57, 0.22);
+}
+
 .class-grid,
 .dashboard-grid,
 .student-grid,

@@ -196,6 +196,23 @@ button {
   color: var(--forest);
 }
 
+.button.audiobook {
+  background: var(--accent);
+  color: #fffaf0;
+  box-shadow: 0 12px 30px rgba(180, 92, 57, 0.22);
+}
+
+.audiobook-panel {
+  border-color: rgba(180, 92, 57, 0.32);
+  background: rgba(180, 92, 57, 0.12);
+}
+
+.audiobook-player {
+  width: 100%;
+  min-height: 42px;
+  accent-color: var(--accent);
+}
+
 .layout {
   display: grid;
   grid-template-columns: minmax(270px, 0.34fr) minmax(560px, 0.88fr) minmax(390px, 0.58fr);

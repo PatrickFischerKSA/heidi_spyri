@@ -28,6 +28,7 @@ const TEACHER_COOKIE = "kehlmann_teacher_access";
 const SEB_CONFIG_KEY_HASH = process.env.SEB_CONFIG_KEY_HASH || process.env.KEHLMANN_SEB_CONFIG_KEY_HASH || "";
 const READER_PDF_SOURCE = "/reader/assets/heidi-volltext.html";
 const BACKGROUND_VIDEO = "/reader/assets/heidi-background.mp4";
+const AUDIOBOOK_URL = "/reader/assets/heidi-hoerbuch.mp3";
 const ASSET_VERSION = process.env.RENDER_GIT_COMMIT || String(Date.now());
 
 function teacherRuntimeConfig() {
@@ -231,6 +232,20 @@ function renderShellPage({ title, body, bodyClass = "" }) {
           .button.secondary, button.secondary {
             background: rgba(49,67,53,0.1);
             color: var(--forest);
+          }
+          .button.audiobook {
+            background: #b45c39;
+            color: #fffaf0;
+            box-shadow: 0 12px 30px rgba(180, 92, 57, 0.22);
+          }
+          .audiobook-callout {
+            margin-top: 16px;
+            padding: 16px;
+            border-radius: 22px;
+            border: 1px solid rgba(180, 92, 57, 0.28);
+            background: rgba(180, 92, 57, 0.12);
+            display: grid;
+            gap: 12px;
           }
           body.teacher-entry-page .button,
           body.teacher-entry-page button {
@@ -511,9 +526,15 @@ function renderLandingPage() {
           </p>
           <div class="row">
             <a class="button" href="/open">Offene Version</a>
+            <a class="button audiobook" href="${AUDIOBOOK_URL}" target="_blank" rel="noreferrer">Hörbuch starten</a>
             <a class="button secondary" href="/seb">SEB-Version</a>
             <a class="button secondary" href="/teacher-entry">Lehrer*inneneingang</a>
             <a class="button secondary" href="/teacher">Lehrer*innen-Dashboard</a>
+          </div>
+          <div class="audiobook-callout">
+            <strong>Hörbuch zur Romanlektüre</strong>
+            <p>Das vollständige Hörbuch ist als Arbeitsfassung integriert und kann parallel zum Volltext genutzt werden.</p>
+            <a class="button audiobook" href="${AUDIOBOOK_URL}" target="_blank" rel="noreferrer">Hörbuch öffnen</a>
           </div>
         </section>
         <section class="panel">
@@ -815,6 +836,11 @@ function renderStudentAccessPage({ mode, lessonId, errorText = "" }) {
             <br>1. Namen eintragen.
             <br>2. Auf ${isOpen ? "Öffnen" : "Starten"} klicken.
             <br>3. Alle Lektionen bearbeiten.
+          </div>
+          <div class="audiobook-callout">
+            <strong>Hörbuch bereithalten</strong>
+            <p>Du kannst den Roman zusätzlich hören und Textstellen danach im Reader schriftlich sichern.</p>
+            <a class="button audiobook" href="${AUDIOBOOK_URL}" target="_blank" rel="noreferrer">Hörbuch starten</a>
           </div>
           ${errorText ? `<div class="notice"><strong>Hinweis:</strong> ${errorText}</div>` : ""}
           <form method="post" action="${formAction}" class="form-grid">

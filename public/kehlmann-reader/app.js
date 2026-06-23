@@ -5,6 +5,7 @@ const mode = window.KEHLMANN_READER_MODE || "open";
 const modeLabel = window.KEHLMANN_READER_MODE_LABEL || "Offene Version";
 const config = window.KEHLMANN_READER_CONFIG || {};
 const app = document.body;
+const AUDIOBOOK_URL = "/reader/assets/heidi-hoerbuch.mp3";
 
 const reviewLevels = [
   { value: "stark", label: "stark" },
@@ -1786,6 +1787,24 @@ function renderParcoursExportPanel() {
   `;
 }
 
+function renderAudiobookPanel() {
+  return `
+    <section class="panel audiobook-panel">
+      <div class="panel-head">
+        <div>
+          <div class="eyebrow">Hörbuch</div>
+          <h2>Heidis Lehr- und Wanderjahre hören</h2>
+        </div>
+        <a class="button audiobook" href="${AUDIOBOOK_URL}" target="_blank" rel="noreferrer">Hörbuch in neuem Tab öffnen</a>
+      </div>
+      <p>Nutze das Hörbuch produktiv: Höre eine Passage, stoppe an einer auffälligen Stelle und sichere danach Beobachtung, Textanker und Deutung im Reader.</p>
+      <audio class="audiobook-player" controls preload="none">
+        <source src="${AUDIOBOOK_URL}" type="audio/mpeg">
+      </audio>
+    </section>
+  `;
+}
+
 function render() {
   if (state.loading) {
     app.innerHTML = '<main class="reader-shell"><section class="panel"><h1>Lädt ...</h1><p>Arbeitsumgebung wird vorbereitet.</p></section></main>';
@@ -1815,12 +1834,15 @@ function render() {
           </p>
         </div>
         <div class="hero-actions">
+          <a class="button audiobook" href="#hoerbuch">Hörbuch starten</a>
           <span class="status-badge">${escapeHtml(modeLabel)}</span>
           <span class="status-badge">${lessonSets.length} Lektionen</span>
           <span class="status-badge">${escapeHtml(lesson.reviewFocus)}</span>
           ${mode === "open" ? '<a class="button secondary" href="/auth/logout">Abmelden</a>' : ""}
         </div>
       </section>
+
+      <div id="hoerbuch">${renderAudiobookPanel()}</div>
 
       <div data-top-status-slot>${renderTopStatus()}</div>
 

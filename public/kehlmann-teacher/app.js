@@ -1,5 +1,6 @@
 const app = document.body;
 const config = window.KEHLMANN_TEACHER_CONFIG || {};
+const AUDIOBOOK_URL = "/reader/assets/heidi-hoerbuch.mp3";
 
 const state = {
   loading: true,
@@ -277,6 +278,7 @@ function render() {
           <p>Namen genügen; alle Lektionen sind Teil des Parcours.</p>
         </div>
         <div class="hero-actions">
+          <a class="button audiobook" href="${AUDIOBOOK_URL}" target="_blank" rel="noreferrer">Hörbuch starten</a>
           <a class="button secondary" href="${escapeHtml(config.teacherEntryUrl || "/teacher-entry")}">Lehrer*inneneingang</a>
           <a class="button secondary" href="${escapeHtml(config.openUrl || "/open")}">Reader öffnen</a>
           <a class="button secondary" href="/">Startseite</a>
