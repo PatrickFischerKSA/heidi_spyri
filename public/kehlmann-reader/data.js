@@ -63,6 +63,25 @@ const theoryProfiles = {
       "almoehi"
     ]
   },
+  "spyris-werk-lesarten": {
+    "label": "Spyri, Gesellschaft und Politik",
+    "aliases": [
+      "spyri",
+      "johanna",
+      "biografie",
+      "frauenbiografie",
+      "zürich",
+      "zuerich",
+      "politik",
+      "liberal",
+      "konservativ",
+      "gesellschaft",
+      "frauenrolle",
+      "heidi figur",
+      "rezeption",
+      "lesarten"
+    ]
+  },
   "religion": {
     "label": "Religion und Gottvertrauen",
     "aliases": [
@@ -449,6 +468,35 @@ export const theoryResources = [
     "writingFrame": "Mit der Leselinse Archiv wird sichtbar, dass ..."
   },
   {
+    "id": "spyris-werk-lesarten",
+    "title": "Forschungsdossier: Johanna Spyri und ihr Werk - Lesarten",
+    "shortTitle": "Spyri",
+    "sourceTitle": "SIKJM: Johanna Spyri und ihr Werk - Lesarten",
+    "mediaType": "html",
+    "openUrl": "/reader/assets/johanna-spyri-und-ihr-werk-lesarten.html",
+    "embedUrl": "/reader/assets/johanna-spyri-und-ihr-werk-lesarten.html",
+    "summary": "Der SIKJM-Band macht das Wechselspiel zwischen Johanna Spyri, Heidi, Frauenbiografie, Zürcher Politik, gesellschaftlichen Rollen und späterer Rezeption sichtbar.",
+    "keyIdeas": [
+      "Johanna Spyri",
+      "Heidi als Figur",
+      "Frauenbiografie",
+      "Zürich",
+      "Politik",
+      "Rezeption"
+    ],
+    "questions": [
+      "Wo schärft Spyris Biografie die Lektüre, ohne Heidi einfach mit Johanna gleichzusetzen?",
+      "Welche gesellschaftlichen oder politischen Spannungen werden im Roman indirekt verhandelbar?",
+      "Wie verändert die spätere Heidi-Rezeption den Blick auf den Roman?"
+    ],
+    "transferPrompts": [
+      "Nutze das Forschungsdossier, um eine konkrete Romanstelle zwischen Text, Biografie und Gesellschaft zu lesen.",
+      "Prüfe, ob Heidi eher biografische Spur, literarische Figur oder kulturelle Projektionsfläche ist.",
+      "Formuliere eine These dazu, wie politische und gesellschaftliche Konflikte im Roman indirekt erscheinen."
+    ],
+    "writingFrame": "Mit der Leselinse Spyri/Gesellschaft wird sichtbar, dass ..."
+  },
+  {
     "id": "religion",
     "title": "Dossier: Religion, Großmutter und Mehrfachadressierung",
     "shortTitle": "Religion",
@@ -499,6 +547,32 @@ export const theoryResources = [
     "writingFrame": "Mit der Leselinse Natur wird sichtbar, dass ..."
   },
   {
+    "id": "figuren-beziehungen",
+    "title": "Dossier: Figuren und Beziehungen",
+    "shortTitle": "Beziehungen",
+    "sourceTitle": "Dossier: Figuren und Beziehungen",
+    "mediaType": "html",
+    "openUrl": "/reader/assets/heidi-figuren-beziehungen.html",
+    "embedUrl": "/reader/assets/heidi-figuren-beziehungen.html",
+    "summary": "Beziehungen sind in Heidi kein Beiwerk: Nähe, Eifersucht, Fürsorge und Bevormundung verschieben die Ordnung zwischen Kindern und Erwachsenen.",
+    "keyIdeas": [
+      "Heidi",
+      "Peter",
+      "Klara",
+      "Großvater",
+      "Fürsorge"
+    ],
+    "questions": [
+      "Welche Beziehung verändert sich in der aktuellen Szene?",
+      "Wer gewinnt oder verliert Handlungsspielraum?"
+    ],
+    "transferPrompts": [
+      "Nutze Figurenbeziehungen als Leselinse und sichere die Deutung an einer konkreten Romanstelle.",
+      "Formuliere eine These, die ohne Beziehungsanalyse nicht sichtbar wäre."
+    ],
+    "writingFrame": "Mit der Leselinse Figurenbeziehungen wird sichtbar, dass ..."
+  },
+  {
     "id": "stadt-land",
     "title": "Dossier: Frankfurt, Ordnung und Heimweh",
     "shortTitle": "Stadt",
@@ -547,6 +621,56 @@ export const theoryResources = [
       "Formuliere eine These, die ohne Körper nicht sichtbar wäre."
     ],
     "writingFrame": "Mit der Leselinse Körper wird sichtbar, dass ..."
+  },
+  {
+    "id": "sprache-erzaehlen",
+    "title": "Dossier: Sprache und Erzählen",
+    "shortTitle": "Sprache",
+    "sourceTitle": "Dossier: Sprache und Erzählen",
+    "mediaType": "html",
+    "openUrl": "/reader/assets/heidi-sprache-erzaehlen.html",
+    "embedUrl": "/reader/assets/heidi-sprache-erzaehlen.html",
+    "summary": "Dialoge, Anreden, Missverständnisse und Erzählerkommentare zeigen soziale Ordnung und erzeugen Komik, Kritik oder Nähe.",
+    "keyIdeas": [
+      "Dialog",
+      "Anrede",
+      "Missverständnis",
+      "Erzählstimme"
+    ],
+    "questions": [
+      "Welche Formulierung trägt die Deutung?",
+      "Wie steuert die Erzählstimme unseren Blick auf Heidi oder die Erwachsenen?"
+    ],
+    "transferPrompts": [
+      "Nutze Sprache als Leselinse und sichere die Deutung an einer konkreten Romanstelle.",
+      "Formuliere eine These, die ohne genaue Wortlautbeobachtung nicht sichtbar wäre."
+    ],
+    "writingFrame": "Mit der Leselinse Sprache wird sichtbar, dass ..."
+  },
+  {
+    "id": "schuld-ordnung",
+    "title": "Dossier: Schuld und Ordnung",
+    "shortTitle": "Schuld",
+    "sourceTitle": "Dossier: Schuld und Ordnung",
+    "mediaType": "html",
+    "openUrl": "/reader/assets/heidi-schuld-ordnung.html",
+    "embedUrl": "/reader/assets/heidi-schuld-ordnung.html",
+    "summary": "Peters Tat, Geständnis und Wiedergutmachung zeigen, wie der Roman Schuld versteht, sozial einordnet und am Schluss beruhigt.",
+    "keyIdeas": [
+      "Schuld",
+      "Geständnis",
+      "Vergebung",
+      "Wiedergutmachung"
+    ],
+    "questions": [
+      "Welche Motive führen zur Schuld?",
+      "Wie unterscheidet der Roman zwischen Verstehen, Entschuldigen und Wiedergutmachen?"
+    ],
+    "transferPrompts": [
+      "Nutze Schuld und Ordnung als Leselinse und sichere die Deutung an einer konkreten Romanstelle.",
+      "Formuliere eine These, die den Schluss nicht nur harmonisch, sondern kritisch liest."
+    ],
+    "writingFrame": "Mit der Leselinse Schuld und Ordnung wird sichtbar, dass ..."
   },
   {
     "id": "bilder-popularisierung",
@@ -1799,6 +1923,7 @@ export const lessonSets = [
     "sebPrompt": "Bearbeite die Leitfragen dieser Lektion präzise am Volltext und nutze mindestens eine Leselinse.",
     "recommendedTheoryIds": [
       "archiv-biografie",
+      "spyris-werk-lesarten",
       "natur-paedagogik"
     ],
     "resourceAssignments": [
@@ -1817,6 +1942,23 @@ export const lessonSets = [
           "Wichtig ist die soziale Lage: Dete sucht Arbeit in Frankfurt und gibt die Verantwortung an den Großvater zurück. Dadurch wird Heidis Abgabe als ökonomisch und familiär bedingte Verschiebung lesbar.",
           "Dete erscheint dadurch ambivalent. Sie handelt eigennützig, aber nicht aus bloßer Bosheit; sie nutzt eine Möglichkeit zum sozialen Aufstieg und blendet Heidis Perspektive aus.",
           "Aussagekräftig ist, dass Dete sagt, das Kind müsse beim Großvater bleiben. Die Formulierung zeigt, dass Heidi nicht selbst entscheidet, sondern als Zuständigkeit zwischen Erwachsenen verschoben wird."
+        ]
+      },
+      {
+        "resourceId": "spyris-werk-lesarten",
+        "title": "Spyri und Heidi: Biografische Projektion vorsichtig prüfen",
+        "summary": "Das Forschungsdossier macht deutlich, dass Heidi biografische Spuren aufnehmen kann, aber nicht einfach mit Johanna Spyri gleichgesetzt werden darf.",
+        "task": "Prüfe den Anfang des Romans als Wechselspiel zwischen Autorinbiografie und literarischer Figur: Wo wirkt Heidi wie eine biografische Spur, wo ist sie klar erzählerisch gebaut?",
+        "questionTasks": [
+          "Welche Information aus dem Dossier verhindert eine einfache Gleichung Johanna gleich Heidi?",
+          "Welche Eigenschaft Heidis könnte trotzdem auf Spyris Selbst- oder Wunschbild verweisen?",
+          "Welche Textstelle zeigt, dass Heidi zuerst als literarische Figur und nicht als Privatperson funktioniert?"
+        ],
+        "taskGuide": "Eine sorgfältige Antwort hält zwei Bewegungen auseinander: Das Dossier erlaubt biografische Bezüge zu Vitalität, Heimweh und weiblicher Lebensbegrenzung, aber der Roman formt Heidi als offene Kinderfigur, die mehr ist als ein verschlüsseltes Selbstporträt.",
+        "answerGuides": [
+          "Das Dossier betont die unsichere Archivlage und die Gefahr biografischer Kurzschlüsse. Heidi kann Spuren von Spyri aufnehmen, bleibt aber eine literarisch gestaltete Figur.",
+          "Heidis Vitalität, Naturbindung und Heimweh können als Wunsch- oder Erinnerungsfigur Spyris gelesen werden. Wichtig ist, diese Deutung als Möglichkeit und nicht als Beweis zu formulieren.",
+          "Schon der Anfang mit Aufstieg, Kleidung, Dete und Dorfgerede baut Heidi als soziale und erzählerische Figur. Sie wird in Konflikte hineingestellt, die über private Biografie hinausgehen."
         ]
       },
       {
@@ -1970,6 +2112,7 @@ export const lessonSets = [
     "sebPrompt": "Bearbeite die Leitfragen dieser Lektion präzise am Volltext und nutze mindestens eine Leselinse.",
     "recommendedTheoryIds": [
       "stadt-land",
+      "spyris-werk-lesarten",
       "koerper-gesundheit"
     ],
     "resourceAssignments": [
@@ -1988,6 +2131,23 @@ export const lessonSets = [
           "Besonders fremd wirken Regeln zu Sitzen, Sprechen, Essen, Lernen oder Gehorsam. Entscheidend ist, dass Heidi diese Regeln nicht aus ihrer bisherigen Erfahrung ableiten kann.",
           "Der Innenraum erscheint geschlossen, kontrolliert und sozial codiert; die Alp ist weit, beweglich und sinnlich erfahrbar. Der Kontrast ist räumlich und pädagogisch.",
           "Frau Rottenmeiers Ordnung beschämt und diszipliniert Heidi. Sie macht aus Heidis Lebendigkeit ein Problem und verstärkt ihre Fremdheit."
+        ]
+      },
+      {
+        "resourceId": "spyris-werk-lesarten",
+        "title": "Gesellschaft und Politik: Zürichs Ordnung im Spiegel Frankfurts",
+        "summary": "Der SIKJM-Band zeigt Spyris Umfeld als politisch und gesellschaftlich konfliktgeladen; Frankfurt kann deshalb als literarischer Raum von Macht, Anpassung und Normierung gelesen werden.",
+        "task": "Vergleiche die Frankfurter Hausordnung mit den gesellschaftlichen Ordnungsfragen aus dem Dossier: Wie zeigt der Roman Macht, Anpassung und Ausschluss, ohne offen politisch zu argumentieren?",
+        "questionTasks": [
+          "Welche politische oder gesellschaftliche Spannung aus dem Dossier passt als Hintergrund zur Frankfurter Ordnung?",
+          "Wie wird Heidi in Frankfurt zur Außenseiterin eines Regel- und Standessystems?",
+          "Warum ist es wichtig, Politik hier indirekt und nicht als platte Allegorie zu lesen?"
+        ],
+        "taskGuide": "Eine gute Antwort verbindet Frankfurts Hausordnung mit dem Dossier zu Zürich, Liberalismus, konservativem Milieu und weiblicher Öffentlichkeit. Sie behauptet nicht, Frankfurt sei einfach Zürich, sondern zeigt, wie der Roman gesellschaftliche Macht in Alltag, Räumen und Benimmregeln übersetzt.",
+        "answerGuides": [
+          "Passend sind die Spannungen zwischen politischer Macht, gesellschaftlicher Zugehörigkeit, Anpassungsdruck und weiblicher Zurückhaltung. Das Dossier zeigt, dass Spyri solche Konflikte kannte, auch wenn sie nicht offen politisch schrieb.",
+          "Heidi wird zur Außenseiterin, weil sie die Codes von Stand, Bildung, Dienstbotenordnung und städtischem Benehmen nicht beherrscht. Ihre Fremdheit macht das System sichtbar.",
+          "Politik darf hier nicht als Eins-zu-eins-Schlüssel gelesen werden. Überzeugend ist eine indirekte Deutung: Der Roman verwandelt gesellschaftliche Konflikte in Szenen von Raum, Sprache und Erziehung."
         ]
       },
       {
@@ -2084,6 +2244,7 @@ export const lessonSets = [
     "sebPrompt": "Bearbeite die Leitfragen dieser Lektion präzise am Volltext und nutze mindestens eine Leselinse.",
     "recommendedTheoryIds": [
       "stadt-land",
+      "spyris-werk-lesarten",
       "koerper-gesundheit"
     ],
     "resourceAssignments": [
@@ -2102,6 +2263,23 @@ export const lessonSets = [
           "Fenster, Treppen, Zimmer, geschlossene Türen oder fehlende Aussicht können Heidis Heimweh sichtbar machen. Räume wirken wie Hindernisse.",
           "Heidis Sehnsucht ist tiefer als schlechte Laune: Sie betrifft Körper, Schlaf, Sprache und Lebensvertrauen. Sie verliert einen Teil ihrer selbst.",
           "Geeignet sind Stellen, in denen Heidi nach Bergen, Himmel, Geißen, Großvater oder dem Dörfli fragt oder Frankfurt mit fehlender Aussicht kontrastiert wird."
+        ]
+      },
+      {
+        "resourceId": "spyris-werk-lesarten",
+        "title": "Heimweh und Frauenbiografie: Heidi als innere Gegenfigur",
+        "summary": "Das Dossier legt nahe, Heimweh nicht nur als Kindermotiv, sondern auch als Spur weiblicher Lebensbegrenzung, Sehnsucht und Selbstentwurf zu lesen.",
+        "task": "Deute Heidis Heimweh als Schnittstelle zwischen Romanhandlung und Spyris Frauenbiografie: Welche Sehnsucht wird körperlich erzählt, ohne autobiografisch bewiesen werden zu müssen?",
+        "questionTasks": [
+          "Welche Verbindung zwischen Heidis Heimweh und Spyris Lebenssituation stellt das Dossier als Deutungsmöglichkeit bereit?",
+          "Wie zeigt der Roman Heimweh körperlich statt nur psychologisch?",
+          "Warum bleibt diese biografische Deutung trotz starker Hinweise vorsichtig?"
+        ],
+        "taskGuide": "Die Antwort sollte Heimweh als literarische Form innerer Unfreiheit lesen: Heidi reagiert körperlich auf falsche Räume. Das Dossier erlaubt, diese Figur mit Spyris weiblicher Lebens- und Schreibsituation zu verbinden, ohne daraus eine direkte Autobiografie zu machen.",
+        "answerGuides": [
+          "Das Dossier verbindet Heidi mit Vitalität, Übersensibilität und Heimweh als möglichen biografischen Spuren. Diese Spuren können Spyris Wunsch nach Natur, Bewegung und Entlastung spiegeln.",
+          "Heimweh erscheint im Schlafwandeln, in Schwäche, Traurigkeit, Blicken aus dem Fenster und körperlicher Unruhe. Der Körper sagt, was Heidi in Frankfurt nicht angemessen aussprechen kann.",
+          "Vorsicht ist nötig, weil keine Stelle beweist, dass Spyri sich selbst direkt erzählt. Die Deutung wird stark, wenn sie am Romantext zeigt, wie Biografie in literarische Form verwandelt wird."
         ]
       },
       {
@@ -2314,6 +2492,7 @@ export const lessonSets = [
     "recommendedTheoryIds": [
       "schuld-ordnung",
       "bilder-popularisierung",
+      "spyris-werk-lesarten",
       "studienkompass",
       "ki-trailer"
     ],
@@ -2350,6 +2529,23 @@ export const lessonSets = [
           "Popularisierbar sind Heidis Kindlichkeit, Naturverbundenheit, Fröhlichkeit, Schweizer Alpenkulisse und klare Wiedererkennbarkeit.",
           "Oft verschwinden Armut, Weggabe, Krankheit, religiöser Druck, Peters Schuld und soziale Abhängigkeiten. Übrig bleibt eine harmlose Idylle.",
           "Popularisierung kann Schuld und Schluss versöhnlicher wirken lassen, als sie im Roman angelegt sind. Konflikte werden zu einem beruhigenden Heidi-Bild geglättet."
+        ]
+      },
+      {
+        "resourceId": "spyris-werk-lesarten",
+        "title": "Spyri, Heidi und Nachleben: Autorin, Figur, Ikone",
+        "summary": "Der SIKJM-Band zeigt, dass Heidi immer wieder neu gelesen, übersetzt und medial umgeformt wird; zugleich bleibt Spyri als Person schwer eindeutig zu fassen.",
+        "task": "Formuliere zum Schluss eine differenzierte These zum Wechselspiel zwischen Spyri und Heidi: Wie wird aus einer literarischen Kinderfigur eine biografisch, gesellschaftlich und medial aufgeladene Ikone?",
+        "questionTasks": [
+          "Welche Spannung zwischen Autorin und Figur bleibt nach der Lektüre offen?",
+          "Welche gesellschaftliche oder politische Dimension wird durch das Dossier im Schluss neu sichtbar?",
+          "Wie erklärt das Dossier, dass Heidi über den Roman hinaus in jeder Generation anders gelesen werden kann?"
+        ],
+        "taskGuide": "Eine überzeugende Antwort bündelt die Einheit: Heidi ist nicht einfach Spyri, aber die Figur trägt Spuren von weiblicher Biografie, gesellschaftlicher Ordnung und kultureller Sehnsucht. Im Nachleben wird diese Figur immer wieder vereinfacht, erweitert oder umcodiert.",
+        "answerGuides": [
+          "Offen bleibt, wie viel Johanna in Heidi steckt. Gerade diese Unentscheidbarkeit macht die Figur stark: Sie ist biografisch anschließbar, aber literarisch eigenständig.",
+          "Neu sichtbar werden Fragen von weiblichem Handlungsspielraum, politischer Zugehörigkeit, sozialer Ordnung und öffentlichem Sprechen. Der Schluss kann deshalb als Beruhigung und als kulturelle Formung gelesen werden.",
+          "Das Dossier zeigt Übersetzungen, Filme und Lesarten als Umformungen. Heidi bleibt anschlussfähig, weil sie klare Bilder bietet, aber zugleich offene Konflikte in Natur, Heimat, Kindheit und Gesellschaft bündelt."
         ]
       },
       {
