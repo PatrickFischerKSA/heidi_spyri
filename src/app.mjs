@@ -45,6 +45,15 @@ function assetUrl(pathname) {
   return `${pathname}?v=${encodeURIComponent(ASSET_VERSION)}`;
 }
 
+function escapeHtml(value) {
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
 function renderShellPage({ title, body, bodyClass = "" }) {
   return `
     <!doctype html>
@@ -527,7 +536,6 @@ function renderLandingPage() {
           <div class="row">
             <a class="button" href="/open">Offene Version</a>
             <a class="button audiobook" href="${AUDIOBOOK_URL}" target="_blank" rel="noreferrer">Hörbuch starten</a>
-            <a class="button secondary" href="/seb">SEB-Version</a>
             <a class="button secondary" href="/teacher-entry">Lehrer*inneneingang</a>
             <a class="button secondary" href="/teacher">Lehrer*innen-Dashboard</a>
           </div>
@@ -625,7 +633,7 @@ function renderTeacherEntryPage({ lessonId, entryId } = {}) {
       <main class="page">
         <section class="panel">
           <div class="eyebrow">Lehrer*inneneingang</div>
-          <h1>Steueransicht für Unterricht und Prüfung</h1>
+          <h1>Steueransicht für den Unterricht</h1>
           <p>
             Diese Übersicht zeigt alle Lektionen, Leitfragen, Materialien und Arbeitsaufträge direkt,
             als vollständigen Parcours für die Unterrichtsarbeit.
@@ -646,12 +654,12 @@ function renderTeacherEntryPage({ lessonId, entryId } = {}) {
               <p>${config.openUrl}</p>
             </div>
             <div class="meta-card">
-              <strong>SEB-Version</strong>
-              <p>${config.sebUrl}</p>
-            </div>
-            <div class="meta-card">
               <strong>Anmeldung</strong>
               <p>Nur Name. Danach ist der vollständige Parcours geöffnet.</p>
+            </div>
+            <div class="meta-card">
+              <strong>Lehrer*innen-Dashboard</strong>
+              <p>${config.teacherUrl}</p>
             </div>
           </div>
           <div class="teacher-entry-resource-list">
@@ -666,10 +674,6 @@ function renderTeacherEntryPage({ lessonId, entryId } = {}) {
             <article class="resource-nav-card">
               <strong>3. Kontrollieren</strong>
               <span>Im Dashboard siehst du Fortschritt, Textanker, Theoriebezüge und Peer Reviews.</span>
-            </article>
-            <article class="resource-nav-card">
-              <strong>4. SEB optional</strong>
-              <span>Falls nötig, öffnen Schüler*innen <em>${config.sebUrl}</em> im Safe Exam Browser und tragen ebenfalls nur ihren Namen ein.</span>
             </article>
           </div>
         </section>
@@ -699,10 +703,6 @@ function renderTeacherEntryPage({ lessonId, entryId } = {}) {
               <div class="meta-card">
                 <strong>Review-Fokus</strong>
                 <p>${currentLesson.reviewFocus}</p>
-              </div>
-              <div class="meta-card">
-                <strong>SEB-Arbeitsauftrag</strong>
-                <p>${currentLesson.sebPrompt}</p>
               </div>
               <div class="meta-card">
                 <strong>Seitenkorridor</strong>
@@ -758,7 +758,6 @@ function renderTeacherEntryPage({ lessonId, entryId } = {}) {
               <div class="notice">Im Lehrer*inneneingang erscheint nur der knappe Aufgabenüberblick. Die interaktiven Textfelder mit Sofortfeedback liegen ausschliesslich im Reader.</div>
               <div class="row">
                 <a class="button secondary" href="/open/lesson/${currentLesson.id}" target="_blank" rel="noreferrer">Diese Lektion im Reader öffnen</a>
-                <a class="button secondary" href="/seb/lesson/${currentLesson.id}" target="_blank" rel="noreferrer">SEB-Ansicht öffnen</a>
               </div>
               <div class="compact-task-list">
                 ${(currentEntry.focusTasks || []).map((task, index) => `
@@ -1117,44 +1116,12 @@ export function createApp() {
     response.send(renderReaderPage("open", request.params.lessonId));
   });
 
-  app.get("/seb", async (request, response) => {
-    if (!isSafeExamBrowserRequest(request, SEB_CONFIG_KEY_HASH)) {
-      response.status(403).send(renderSebBlockedPage());
-      return;
-    }
-
-    if (!hasStudentSession(request)) {
-      response.send(renderStudentAccessPage({ mode: "seb" }));
-      return;
-    }
-
-    if (!(await ensureValidStudentSession(request, response, "seb"))) {
-      clearStudentCookies(response);
-      response.redirect(303, "/seb");
-      return;
-    }
-
-    response.send(renderReaderPage("seb"));
+  app.get("/seb", (_request, response) => {
+    response.redirect(303, "/open");
   });
 
-  app.get("/seb/lesson/:lessonId", async (request, response) => {
-    if (!isSafeExamBrowserRequest(request, SEB_CONFIG_KEY_HASH)) {
-      response.status(403).send(renderSebBlockedPage());
-      return;
-    }
-
-    if (!hasStudentSession(request)) {
-      response.send(renderStudentAccessPage({ mode: "seb", lessonId: request.params.lessonId }));
-      return;
-    }
-
-    if (!(await ensureValidStudentSession(request, response, "seb", request.params.lessonId))) {
-      clearStudentCookies(response);
-      response.redirect(303, `/seb/lesson/${encodeURIComponent(request.params.lessonId)}`);
-      return;
-    }
-
-    response.send(renderReaderPage("seb", request.params.lessonId));
+  app.get("/seb/lesson/:lessonId", (request, response) => {
+    response.redirect(303, `/open/lesson/${encodeURIComponent(request.params.lessonId)}`);
   });
 
   app.get("/teacher", (request, response) => {
