@@ -65,13 +65,13 @@ function renderShellPage({ title, body, bodyClass = "" }) {
         <style>
           :root {
             --bg: #f3efe7;
-            --surface: rgba(255,255,255,0.12);
-            --border: rgba(48,66,55,0.16);
+            --surface: rgba(255,255,255,0.045);
+            --border: rgba(255,255,255,0.24);
             --text: #172119;
-            --muted: #46514a;
+            --muted: #27352d;
             --accent: #b45c39;
             --forest: #314335;
-            --shadow: 0 20px 60px rgba(30, 42, 36, 0.12);
+            --shadow: 0 18px 56px rgba(20, 28, 23, 0.1);
           }
           * { box-sizing: border-box; }
           body {
@@ -97,8 +97,8 @@ function renderShellPage({ title, body, bodyClass = "" }) {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: blur(5px) saturate(0.92) contrast(1.12) brightness(0.72);
-            transform: scale(1.03);
+            filter: blur(2px) saturate(1.02) contrast(1.08) brightness(0.82);
+            transform: scale(1.01);
             opacity: 1;
           }
           .site-background::before {
@@ -106,20 +106,20 @@ function renderShellPage({ title, body, bodyClass = "" }) {
             position: absolute;
             inset: -24px;
             background:
-              linear-gradient(180deg, rgba(56, 50, 45, 0.18) 0%, rgba(34, 31, 28, 0.24) 100%);
-            filter: blur(6px) saturate(0.94) contrast(1.14) brightness(0.74);
+              linear-gradient(180deg, rgba(56, 50, 45, 0.08) 0%, rgba(34, 31, 28, 0.12) 100%);
+            filter: blur(3px) saturate(1) contrast(1.08) brightness(0.82);
             transform: scale(1.02);
-            opacity: 0.28;
+            opacity: 0.16;
           }
           .site-background::after {
             content: "";
             position: absolute;
             inset: 0;
             background:
-              linear-gradient(90deg, rgba(247, 240, 230, 0.24) 0%, rgba(247, 240, 230, 0.08) 24%, rgba(38, 34, 31, 0.12) 70%, rgba(24, 28, 25, 0.24) 100%),
-              radial-gradient(circle at 54% 18%, rgba(255, 248, 238, 0.01), rgba(255, 248, 238, 0.01) 14%, rgba(255, 248, 238, 0.12) 42%, rgba(214, 206, 192, 0.22) 100%),
-              radial-gradient(circle at 22% 18%, rgba(180, 92, 57, 0.08), transparent 0 18%),
-              radial-gradient(circle at 80% 14%, rgba(49, 67, 53, 0.12), transparent 0 20%);
+              linear-gradient(90deg, rgba(247, 240, 230, 0.08) 0%, rgba(247, 240, 230, 0.02) 28%, rgba(24, 28, 25, 0.08) 100%),
+              radial-gradient(circle at 54% 18%, rgba(255, 248, 238, 0.01), rgba(255, 248, 238, 0.01) 24%, rgba(214, 206, 192, 0.08) 100%),
+              radial-gradient(circle at 22% 18%, rgba(180, 92, 57, 0.03), transparent 0 18%),
+              radial-gradient(circle at 80% 14%, rgba(49, 67, 53, 0.05), transparent 0 20%);
           }
           .background-video-toggle {
             position: fixed;
@@ -154,7 +154,7 @@ function renderShellPage({ title, body, bodyClass = "" }) {
             border-radius: 28px;
             box-shadow: var(--shadow);
             padding: 24px;
-            backdrop-filter: blur(14px);
+            backdrop-filter: blur(4px) saturate(1.1);
           }
           body.login-page .page {
             min-height: 100vh;
@@ -162,14 +162,14 @@ function renderShellPage({ title, body, bodyClass = "" }) {
           }
           body.login-page .panel {
             max-width: 980px;
-            background: rgba(246, 248, 242, 0.88);
-            border-color: rgba(49, 67, 53, 0.2);
+            background: rgba(246, 248, 242, 0.12);
+            border-color: rgba(255, 255, 255, 0.24);
           }
           body.login-page h1 {
             font-size: clamp(3rem, 7vw, 5.2rem);
           }
           body.login-page .notice {
-            background: rgba(238, 228, 216, 0.9);
+            background: rgba(238, 228, 216, 0.12);
           }
           body.teacher-entry-page {
             background: #edf0ea;
@@ -194,8 +194,8 @@ function renderShellPage({ title, body, bodyClass = "" }) {
             border-radius: 16px;
             box-shadow: none;
             padding: 20px;
-            background: rgba(248, 249, 245, 0.96);
-            backdrop-filter: none;
+            background: rgba(248, 249, 245, 0.12);
+            backdrop-filter: blur(3px) saturate(1.08);
           }
           .eyebrow {
             text-transform: uppercase;
@@ -215,6 +215,7 @@ function renderShellPage({ title, body, bodyClass = "" }) {
           p, li {
             line-height: 1.6;
             color: var(--muted);
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.62);
           }
           strong,
           b {
@@ -239,7 +240,8 @@ function renderShellPage({ title, body, bodyClass = "" }) {
             cursor: pointer;
           }
           .button.secondary, button.secondary {
-            background: rgba(49,67,53,0.1);
+            background: rgba(255,255,255,0.16);
+            border: 1px solid rgba(255,255,255,0.24);
             color: var(--forest);
           }
           .button.audiobook {
@@ -252,7 +254,8 @@ function renderShellPage({ title, body, bodyClass = "" }) {
             padding: 16px;
             border-radius: 22px;
             border: 1px solid rgba(180, 92, 57, 0.28);
-            background: rgba(180, 92, 57, 0.12);
+            background: rgba(180, 92, 57, 0.06);
+            backdrop-filter: blur(3px) saturate(1.08);
             display: grid;
             gap: 12px;
           }
@@ -273,19 +276,19 @@ function renderShellPage({ title, body, bodyClass = "" }) {
             padding: 12px 14px;
             font: inherit;
             margin: 10px 0 12px;
-            background: rgba(255,255,255,0.78);
+            background: rgba(255,255,255,0.16);
           }
           .notice {
             border-left: 4px solid var(--accent);
             padding: 14px;
-            background: rgba(180,92,57,0.09);
+            background: rgba(180,92,57,0.05);
             border-radius: 0 14px 14px 0;
             color: #62463d;
           }
           body.teacher-entry-page .notice {
             border-left-width: 5px;
             border-radius: 8px;
-            background: #efe3d8;
+            background: rgba(239, 227, 216, 0.12);
           }
           .form-grid {
             display: grid;
