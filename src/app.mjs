@@ -523,12 +523,13 @@ function lessonMeta(lessonId) {
 function renderLandingPage() {
   const lessons = getLessonSetsWithCounts();
   return renderShellPage({
-    title: "Heidi Lernumgebung",
+    title: "Heidi - Heimat, Heilung, Herzensbildung",
     body: `
       <main class="page">
         <section class="panel">
           <div class="eyebrow">Johanna Spyri</div>
           <h1>Heidi</h1>
+          <h2>Heimat, Heilung, Herzensbildung</h2>
           <p>
             Autonome Lese- und Lernumgebung mit integriertem Volltext, offener Anmeldung,
             Lehrer*innen-Dashboard, Peer Review und direktem
@@ -891,7 +892,7 @@ function renderTeacherPage() {
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Lehrer*innen-Dashboard · Heidi Lernumgebung</title>
+        <title>Lehrer*innen-Dashboard · Heidi - Heimat, Heilung, Herzensbildung</title>
         <link rel="stylesheet" href="${assetUrl("/kehlmann-teacher/styles.css")}">
       </head>
       <body>
@@ -919,7 +920,7 @@ function renderReaderPage(mode, lessonId) {
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Heidi Lernumgebung</title>
+        <title>Heidi - Heimat, Heilung, Herzensbildung</title>
         <link rel="stylesheet" href="${assetUrl("/reader/styles.css")}">
       </head>
       <body>

@@ -1920,7 +1920,8 @@ function render() {
       <section class="hero">
         <div>
           <div class="eyebrow">Johanna Spyri · Heidi · ${escapeHtml(modeLabel)}</div>
-          <h1>Interaktive Lese- und Lernumgebung</h1>
+          <h1>Heidi</h1>
+          <h2>Heimat, Heilung, Herzensbildung</h2>
           <p>
             ${mode === "seb"
               ? "Diese SEB-Fassung führt dich durch selbstständig bearbeitbare Lektionen mit integriertem Volltext, sofortigem Arbeitsfeedback, Forschungsdossiers und Filmwerkstatt."
